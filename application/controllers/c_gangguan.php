@@ -206,8 +206,9 @@ class c_gangguan extends CI_Controller{
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
 			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
+			$cari_durasi = $durasi->h+$durasi_jam;
 		} else {
-			$input_durasi = '0:00';
+			$input_durasi = '0:00:00';
 		}
 
 		
@@ -226,7 +227,8 @@ class c_gangguan extends CI_Controller{
 			'lokasi_gangguan' => $lokasi_gangguan,
 			'durasi' => $input_durasi,
 			'bulan' => $bulan,
-			'tahun' => $tahun
+			'tahun' => $tahun,
+			'cari_durasi' =>$cari_durasi
 			
 		);
 
@@ -543,7 +545,7 @@ class c_gangguan extends CI_Controller{
 	public function filter_manual() 
 	{
 
-		$sid = $this->input->post('sid');
+		$sid= $this->input->post('id_layanan');
 		$id_jenisgangguan = $this->input->post('id_jenisgangguan');
 		$bulan = $this->input->post('bulan');
 		$tahun = $this->input->post('tahun');
@@ -670,6 +672,7 @@ class c_gangguan extends CI_Controller{
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
 			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
+			$cari_durasi = $durasi->h+$durasi_jam;
 		} else {
 			$input_durasi = '0:00:00';
 		}
@@ -687,7 +690,8 @@ class c_gangguan extends CI_Controller{
 			'lokasi_gangguan' => $lokasi_gangguan,
 			'durasi' => $input_durasi,
 			'bulan' => $bulan,
-			'tahun' => $tahun
+			'tahun' => $tahun,
+			'cari_durasi' => $cari_durasi
 			
 		);
 		$this->m_data_gangguan->input_gangguan($data, 'tb_gangguan');

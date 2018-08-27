@@ -122,7 +122,7 @@ class M_data_keluhan extends CI_Model{
   public function cari_sid($input)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input);
+		$this->db->where('id_layanan',$input);
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -190,7 +190,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_jg($input1,$input2)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('id_jeniskeluhan',$input2);
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
@@ -205,7 +205,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_b($input1,$input2)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('bulan',$input2);
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
@@ -219,7 +219,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_t($input1,$input2)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('tahun',$input2);
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
@@ -233,7 +233,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_d($input1,$input2)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('durasi',$input2);
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
@@ -333,7 +333,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_jg_b($input1,$input2,$input3)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('id_jeniskeluhan',$input2);
 		$this->db->where('bulan',$input3);
 		$this->db->where('isDelete','no');
@@ -348,7 +348,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_jg_t($input1,$input2,$input3)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('id_jeniskeluhan',$input2);
 		$this->db->where('tahun',$input3);
 		$this->db->where('isDelete','no');
@@ -363,7 +363,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_jg_d($input1,$input2,$input3)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('id_jeniskeluhan',$input2);
 		$this->db->where('durasi',$input3);
 		$this->db->where('isDelete','no');
@@ -439,7 +439,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_b_t($input1,$input2,$input3)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('bulan',$input2);
 		$this->db->where('tahun',$input3);
 		$this->db->where('isDelete','no');
@@ -454,7 +454,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_b_d($input1,$input2,$input3)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('bulan',$input2);
 		$this->db->where('durasi',$input3);
 		$this->db->where('isDelete','no');
@@ -469,7 +469,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_t_d($input1,$input2,$input3)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('tahun',$input2);
 		$this->db->where('durasi',$input3);
 		$this->db->where('isDelete','no');
@@ -484,7 +484,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_jg_b_t($input1,$input2,$input3,$input4)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('id_jeniskeluhan',$input2);
 		$this->db->where('bulan',$input3);
 		$this->db->where('tahun',$input4);
@@ -500,7 +500,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_jg_b_d($input1,$input2,$input3,$input4)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('id_jeniskeluhan',$input2);
 		$this->db->where('bulan',$input3);
 		$this->db->where('durasi',$input4);
@@ -532,7 +532,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_b_t_d($input1,$input2,$input3,$input4)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('bulan',$input2);
 		$this->db->where('tahun',$input3);
 		$this->db->where('durasi',$input4);
@@ -548,7 +548,7 @@ class M_data_keluhan extends CI_Model{
 	public function cari_sid_jg_b_t_d($input1,$input2,$input3,$input4,$input5)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$input1);
+		$this->db->where('id_layanan',$input1);
 		$this->db->where('id_jeniskeluhan',$input2);
 		$this->db->where('bulan',$input3);
 		$this->db->where('tahun',$input4);

@@ -91,6 +91,7 @@
                     <input type='text' class="form-control" name="open_time" value="<?php echo $g->open_time ?>"/>
                     <input type='hidden' class="form-control" name="id_gangguan" value="<?php echo $g->id_gangguan ?>" />
                     <input type='hidden' class="form-control" name="isDelete" value="<?php echo $g->isDelete ?>" />
+                    <input type='hidden' class="form-control" name="cari_durasi" value="<?php echo $g->cari_durasi ?>" />
                 
                 </div>
             </div>

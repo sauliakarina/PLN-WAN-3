@@ -23,47 +23,31 @@
     <![endif]-->
 </head>
 <body style="width: auto; font-family: Trebuchet MS" ">
-    <header>
-        <div style="width: 900px" class="container">
-            <div  class="row">
-                <div  class="col-md-12">
-                    <strong ></strong>
-                </div>
-
-            </div>
-        </div>
-    </header>
+    
     <!-- HEADER END-->
     
-    <nav class="navbar navbar-inverse set-radius-zero" style="background-color: #086a87 ">
-
-  <center><img  style="padding-top: 20px; padding-bottom: 20px" src="<?php echo base_url();?>/assets/img/pln3.png" class="image1 mt-2"></center>
-</nav>
-</div>
-</div>
-</div>
-
+    <div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="media-left" href="http://pln.co.id/">
+                    <img style="padding-top: 20px; padding-bottom: 20px" src="<?php echo base_url();?>assets/img/pln3.png" />
+                </a>
             </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- LOGO HEADER END-->
-       <section class="menu-section">
-        <div class="container" style="margin-bottom: 100px ">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="navbar-collapse collapse ">
-                        <ul id="menu-top" class="nav navbar-nav navbar-center">
-                            <li><a ><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sistem Pencatatan Gangguan WAN</strong></a></li>
-                        </ul>
-                    </div>
+       <header>
+        <div style="width: 300px" style="margin-bottom: 100px" class="container">
+            <div  class="row">
+                <div  class="col-md-12">
+                    <strong >SISTEM PENCATATAN GANGGUAN WAN</strong>
                 </div>
-
 
             </div>
         </div>
-    </section>
+    </header>
     <!-- MENU SECTION END-->
     <div class="content-wrapper">
         <div class="container">
