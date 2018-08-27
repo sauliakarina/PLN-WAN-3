@@ -44,7 +44,7 @@
                                               </td>
                                             <td><?php echo $k->penyebab_keluhan ?></td>
                                             <td><?php echo $k ->solusi_keluhan ?></td>
-                                            <td></td>
+                                            <td><?php echo $k->durasi ?></td>
                                             <?php if ($status_user == 'Admin') {
                                              ?>
                                             <td>

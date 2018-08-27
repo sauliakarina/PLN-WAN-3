@@ -68,7 +68,7 @@
                                                 
                                               <?php endif; ?>
                                             </td>
-                                            <td></td>
+                                            <td><?php echo $g->durasi ?></td>
                                             <?php if ($status_user == 'Admin') { ?>
                                             <td> 
                                               <div class="btn-group">
