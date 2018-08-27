@@ -81,7 +81,7 @@
         <div class='col-md-6'>
             <div class="form-group">
               <label for="date">Open Time :  </label>
-                    <input type='time' id="timepicker" class="form-control" name="open_time" />
+                    <input id="timepicker" class="form-control" name="open_time" />
                 
                 </div>
             </div>
