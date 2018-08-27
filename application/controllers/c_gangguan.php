@@ -717,7 +717,7 @@ class c_gangguan extends CI_Controller{
  
         // Pengirim dan penerima email.
         $this->email->from('sekretariatdki.sm@pln.co.id', 'Informasi AMS');    // Email dan nama pegirim.
-        $this->email->to('ptiwinab@gmail.com');                       // Penerima email.
+        $this->email->to('moncandani@gmail.com');                       // Penerima email.
  
         
         // Subject email.
