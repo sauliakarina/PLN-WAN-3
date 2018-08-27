@@ -30,7 +30,7 @@ class c_user extends CI_Controller{
 
 	function tambah_aksi_user(){
 		$this->form_validation->set_rules('nama','Nama','required');
-		$this->form_validation->set_rules('id_karyawan','ID Karyawan','required');
+		$this->form_validation->set_rules('no_karyawan','No Karyawan','required');
 		$this->form_validation->set_rules('password','Password','required');
 		$this->form_validation->set_rules('status_user','Status','required');
 
@@ -38,12 +38,12 @@ class c_user extends CI_Controller{
 			$nama = $this->input->post('nama');
 			$password = $this->input->post('password');
 			$status_user = $this->input->post('status_user');
-			$id_karyawan = $this->input->post('id_karyawan');
+			$no_karyawan = $this->input->post('no_karyawan');
 
 			if ($this->m_data_user->cek_id_karyawan($id_karyawan) == 0) {
 				$data=array(
 				'nama' => $nama,
-				'id_karyawan' => $id_karyawan,
+				'no_karyawan' => $no_karyawan,
 				'password' => $password,
 				'status_user' => $status_user
 
@@ -104,6 +104,7 @@ class c_user extends CI_Controller{
 
 	function update_user(){
 		$id_karyawan = $this->input->post('id_karyawan');
+		$no_karyawan = $this->input->post('no_karyawan');
 		$nama = $this->input->post('nama');
 		$password = $this->input->post('password');
 		$status_user = $this->input->post('status_user');
@@ -111,7 +112,8 @@ class c_user extends CI_Controller{
 		$data = array(
 			'nama' => $nama,
 			'password' => $password,
-			'status_user' => $status_user
+			'status_user' => $status_user,
+			'no_karyawan' =>$no_karyawan
 		);
 
 		$where = array(

@@ -80,7 +80,7 @@
                         <div class="panel-body">
                         <div style="width: 320px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input placeholder="ID Karyawan" type="text" name="id_karyawan" id="id_karyawan" class="form-control" />
+                        <input placeholder="ID Karyawan" type="text" name="no_karyawan" id="id_karyawan" class="form-control" />
                         </div>
                         <p>
                         <div style="width: 320px" class="input-group">

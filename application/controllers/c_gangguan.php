@@ -129,7 +129,9 @@ class c_gangguan extends CI_Controller{
 			$end_date = new DateTime($close_date.' '.$close_time);
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
+			$cari_durasi = $durasi->h+$durasi_jam;
 			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
+			
 		} else {
 			$input_durasi = '0:00:00';
 		}
@@ -146,15 +148,14 @@ class c_gangguan extends CI_Controller{
 			'close_date' => $close_date,
 			'lokasi_gangguan' => $lokasi_gangguan,
 			'durasi' => $input_durasi,
+			'cari_durasi' => $cari_durasi,
 			'bulan' => $bulan,
 			'tahun' => $tahun
+			
 			
 		);
 		$this->m_data_gangguan->input_gangguan($data, 'tb_gangguan');
 		redirect('c_gangguan/form_data_gangguan');
-		
-		$this->kirim_email();
-
 	}
 
 
