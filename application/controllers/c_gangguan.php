@@ -157,6 +157,7 @@ class c_gangguan extends CI_Controller{
 
 	}
 
+
 	function hapus_gangguan($id){
 		$data = array(
 		'isDelete' => 'yes'
@@ -642,6 +643,99 @@ class c_gangguan extends CI_Controller{
 	{
 		$data = $this->m_data_gangguan->get_gangguan_byid($id);
 		echo json_encode($data);
+	}
+
+	function tambah_aksi_gangguan_email(){
+
+		$id_layanan = $this->input->post('id_layanan');
+		$id_jenisgangguan= $this->input->post('id_jenisgangguan');
+		$deskripsi_jenisgangguan = $this->input->post('deskripsi_jenisgangguan');
+		$solusi_gangguan = $this->input->post('solusi_gangguan');
+		$penyebab_gangguan = $this->input->post('penyebab_gangguan');
+		$open_time = $this->input->post('open_time');
+		$close_time = $this->input->post('close_time');
+		$open_date = $this->input->post('open_date');
+		$close_date = $this->input->post('close_date');
+		$lokasi_gangguan = $this->input->post('lokasi_gangguan');
+
+		$bulan = date("m", strtotime($open_date)); 
+		$tahun = date("Y", strtotime($open_date)); 
+
+		
+
+		if ($close_date != "" && $close_time !="") {
+			$start_date = new DateTime($open_date.' '.$open_time);
+			$end_date = new DateTime($close_date.' '.$close_time);
+			$durasi = date_diff($end_date, $start_date);
+			$durasi_jam = $durasi->d*24;
+			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
+		} else {
+			$input_durasi = '0:00:00';
+		}
+		
+		$data=array(
+			'id_layanan' => $id_layanan,
+			'id_jenisgangguan' => $id_jenisgangguan,
+			'deskripsi_jenisgangguan' => $deskripsi_jenisgangguan,
+			'solusi_gangguan' => $solusi_gangguan,
+			'penyebab_gangguan' => $penyebab_gangguan,
+			'open_time' => $open_time,
+			'close_time' => $close_time,
+			'open_date' => $open_date,
+			'close_date' => $close_date,
+			'lokasi_gangguan' => $lokasi_gangguan,
+			'durasi' => $input_durasi,
+			'bulan' => $bulan,
+			'tahun' => $tahun
+			
+		);
+		$this->m_data_gangguan->input_gangguan($data, 'tb_gangguan');
+
+		// Konfigurasi email.
+        $config = [
+               'useragent' => 'CodeIgniter',
+               'protocol'  => 'smtp',
+               'mailpath'  => '/usr/sbin/sendmail',
+               'smtp_host' => 'ssl://smtp.gmail.com',
+               'smtp_user' => 'moncandani@gmail.com',   // Ganti dengan email gmail Anda.
+               'smtp_pass' => 'b1819djj',             // Password gmail Anda.
+               'smtp_port' => 465,
+               'smtp_keepalive' => TRUE,
+               'smtp_crypto' => 'SSL',
+               'wordwrap'  => TRUE,
+               'wrapchars' => 80,
+               'mailtype'  => 'html',
+               'charset'   => 'utf-8',
+               'validate'  => TRUE,
+               'crlf'      => "\r\n",
+               'newline'   => "\r\n",
+           ];
+
+        // Load library email dan konfigurasinya.
+        $this->load->library('email', $config);
+ 
+        // Pengirim dan penerima email.
+        $this->email->from('moncandani@gmail.com', 'Monica Ratna A');    // Email dan nama pegirim.
+        $this->email->to('sauliakarina@gmail.com');                       // Penerima email.
+ 
+        
+        // Subject email.
+        $this->email->subject('Kirim Email pada CodeIgniter');
+ 
+        // Isi email. Bisa dengan format html.
+        $this->email->message('data gangguan ditambahkan');
+ 
+        if ($this->email->send())
+        {
+            echo 'Sukses! email berhasil dikirim.';
+        }
+        else
+        {
+            echo 'Error! email tidak dapat dikirim.';
+        }   
+		redirect('c_gangguan/form_data_gangguan');
+		
+
 	}
 
 

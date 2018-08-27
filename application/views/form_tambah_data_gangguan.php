@@ -8,7 +8,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-      <form action="<?php echo base_url();?>c_gangguan/tambah_aksi_gangguan" method="post">        
+      <form action="<?php echo base_url();?>c_gangguan/tambah_aksi_gangguan_email" method="post">        
       <div class="form-group">
       <label for="area">Lokasi : </label>
       <select id="area" name="id_layanan" class="form-control">
