@@ -78,8 +78,8 @@
         <div class='col-md-6'>
             <div class="form-group">
               <label for="date">Open Time :  </label>
-                    <input type='time' class="form-control" name="open_time" />
-                
+                   <!--  <input type='time' class="form-control" name="open_time" /> -->
+                  <input type="text" class="form-control" name="open_time" placeholder="hh:mm:ss" />
                 </div>
             </div>
         
@@ -98,9 +98,9 @@
     
         <div class='col-md-6'>
             <div class="form-group">
-              <label for="date">Close Time :  </label>
-                    <input type='time' class="form-control" name="close_time" />
-                
+              <label for="date">Close Time : </label>
+                    <!-- <input type='time' class="form-control" name="close_time" /> -->
+                    <input type="text" class="form-control" name="close_time" placeholder="hh:mm:ss" />
                 </div>
             </div>
  

@@ -88,7 +88,7 @@
         <div class='col-md-6'>
             <div class="form-group">
               <label for="date">Open Time :  </label>
-                    <input type='time' class="form-control" name="open_time" value="<?php echo $g->open_time ?>"/>
+                    <input type='text' class="form-control" name="open_time" value="<?php echo $g->open_time ?>"/>
                     <input type='hidden' class="form-control" name="id_gangguan" value="<?php echo $g->id_gangguan ?>" />
                     <input type='hidden' class="form-control" name="isDelete" value="<?php echo $g->isDelete ?>" />
                 
@@ -112,9 +112,9 @@
             <div class="form-group">
               <label for="date">Close Time :  </label>
                     <?php if ($g->close_time == '00:00:00') {
-                      echo "<input type='time' class='form-control' name='close_time'/>";
+                      echo "<input type='text' class='form-control' name='close_time' placeholder='hh:mm:ss'/>";
                     } else{
-                      echo "<input type='time' class='form-control' name='close_time' value='$g->close_time'/>";
+                      echo "<input type='text' class='form-control' name='close_time' value='$g->close_time'/>";
                     } ?>
                 </div>
             </div>
