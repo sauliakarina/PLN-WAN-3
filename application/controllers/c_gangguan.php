@@ -696,10 +696,10 @@ class c_gangguan extends CI_Controller{
                'useragent' => 'CodeIgniter',
                'protocol'  => 'smtp',
                'mailpath'  => '/usr/sbin/sendmail',
-               'smtp_host' => 'ssl://smtp.gmail.com',
-               'smtp_user' => 'moncandani@gmail.com',   // Ganti dengan email gmail Anda.
-               'smtp_pass' => 'b1819djj',             // Password gmail Anda.
-               'smtp_port' => 465,
+               'smtp_host' => '10.1.2.25',
+               'smtp_user' => 'helpdesk.tikd',   // Ganti dengan email gmail Anda.
+               'smtp_pass' => 'pln@123ti',             // Password gmail Anda.
+               'smtp_port' => 25,
                'smtp_keepalive' => TRUE,
                'smtp_crypto' => 'SSL',
                'wordwrap'  => TRUE,
@@ -715,15 +715,15 @@ class c_gangguan extends CI_Controller{
         $this->load->library('email', $config);
  
         // Pengirim dan penerima email.
-        $this->email->from('moncandani@gmail.com', 'Monica Ratna A');    // Email dan nama pegirim.
-        $this->email->to('sauliakarina@gmail.com');                       // Penerima email.
+        $this->email->from('sekretariatdki.sm@pln.co.id', 'Informasi AMS');    // Email dan nama pegirim.
+        $this->email->to('ptiwinab@gmail.com');                       // Penerima email.
  
         
         // Subject email.
-        $this->email->subject('Kirim Email pada CodeIgniter');
+        $this->email->subject('Notifikasi Penambahan Data Gangguan');
  
         // Isi email. Bisa dengan format html.
-        $this->email->message('data gangguan ditambahkan');
+        $this->email->message('Data gangguan baru telah ditambahkan');
  
         if ($this->email->send())
         {
@@ -735,7 +735,6 @@ class c_gangguan extends CI_Controller{
         }   
 		redirect('c_gangguan/form_data_gangguan');
 		
-
 	}
 
 
