@@ -101,7 +101,7 @@
                                     <a class='dropdown-item' href=".base_url('c_layanan/jenislayanan')." style='color: black'>KATAGORI LAYANAN</a>
                                     <a class='dropdown-item' href=".base_url('c_layanan/form_layanan')." style='color: black'>LAYANAN</a>
                                     <div class='dropdown-divider'></div>
-                                    <a class='dropdown-item' style='color: black'>USER MANUAL</a>
+                                    <a class='dropdown-item' href=".('https://drive.google.com/open?id=11Pwr7O3dLoy8RrhYpMqAl4PAXoGCZSn0')." style='color: black' method='post' target='_blank'>USER MANUAL</a>
                                     <div class='dropdown-divider'></div>
                                     <a class='dropdown-item' href=".base_url('c_user/user')." style='color: black'>PENGGUNA</a>
                                     </div>
