@@ -19,6 +19,7 @@
                                             <th>Jenis Keluhan</th>
                                             <th>Penyebab</th>
                                             <th>Solusi</th>
+                                            <th>Durasi</th>
                                             <?php if ($status_user == 'Admin') {
                                               echo "<th style='width:50px'>Aksi</th>";
                                             } ?>
@@ -43,6 +44,7 @@
                                               </td>
                                             <td><?php echo $k->penyebab_keluhan ?></td>
                                             <td><?php echo $k ->solusi_keluhan ?></td>
+                                            <td></td>
                                             <?php if ($status_user == 'Admin') {
                                              ?>
                                             <td>

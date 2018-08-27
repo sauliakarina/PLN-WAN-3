@@ -21,6 +21,7 @@
                                             <th>Penyebab</th>
                                             <th>Solusi</th>
                                             <th>Progress</th>
+                                            <th>Durasi</th>
                                             <?php if ($status_user == 'Admin') {
                                               echo "<th style='width:50px'>Aksi</th>";
                                             } ?>
@@ -67,6 +68,7 @@
                                                 
                                               <?php endif; ?>
                                             </td>
+                                            <td></td>
                                             <?php if ($status_user == 'Admin') { ?>
                                             <td> 
                                               <div class="btn-group">
