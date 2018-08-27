@@ -83,6 +83,7 @@ class c_keluhan extends CI_Controller{
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
 			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
+			$cari_durasi = $durasi->h+$durasi_jam;
 		} else {
 			$input_durasi = '0:00';
 		}
@@ -100,7 +101,8 @@ class c_keluhan extends CI_Controller{
 			'close_date' => $close_date,
 			'bulan' => $bulan,
 			'tahun' => $tahun,
-			'durasi' => $input_durasi
+			'durasi' => $input_durasi,
+			'cari_durasi' => $cari_durasi
 
 		);
 		$this->m_data_keluhan->input_keluhan($data, 'tb_keluhan');
@@ -217,6 +219,7 @@ class c_keluhan extends CI_Controller{
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
 			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
+			$cari_durasi = $durasi->h+$durasi_jam;
 		} else {
 			$input_durasi = '0:00:00';
 		}
@@ -235,7 +238,8 @@ class c_keluhan extends CI_Controller{
 			'isDelete' => $isDelete,
 			'durasi' => $input_durasi,
 			'bulan' => $bulan,
-			'tahun' => $tahun
+			'tahun' => $tahun,
+			'cari_durasi' => $cari_durasi
 			
 		);
 
@@ -262,7 +266,7 @@ class c_keluhan extends CI_Controller{
 	public function filter_manual() 
 	{
       	
-		$sid = $this->input->post('sid');
+		$sid = $this->input->post('id_layanan');
 		$id_jeniskeluhan = $this->input->post('id_jeniskeluhan');
 		$bulan = $this->input->post('bulan');
 		$tahun = $this->input->post('tahun');

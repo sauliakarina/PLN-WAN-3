@@ -15,14 +15,14 @@
                    <div class="alert alert-info">
                   <form class="" action="<?php echo base_url().'c_keluhan/filter_manual'; ?>" method="post">
                      <label>Area: </label>
-                        <select id="area" name="sid" class="form-control">
-     <option value="">_____Pilih Area_____</option>
-      <?php 
-        foreach($get_layanan as $gl ) {
-          echo "<option value='$gl->sid'> $gl->lokasi</option>";
-        }
-      ?>
-    </select>
+                     <select id="area" name="id_layanan" class="form-control">
+                     <option value="">_____Pilih Area_____</option>
+                      <?php 
+                        foreach($get_layanan as $gl ) {
+                          echo "<option value='$gl->id_layanan'> $gl->lokasi</option>";
+                        }
+                      ?>
+                    </select>
 
   <div class="form-group">
                           <label for="prodi">Jenis Keluhan :</label>
