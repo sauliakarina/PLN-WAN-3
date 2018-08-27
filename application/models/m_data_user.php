@@ -33,4 +33,12 @@ class M_data_user extends CI_Model{
 		$this->db->update($table,$data);
 	}
 
+	function cek_id_karyawan($id)
+	{
+		$this->db->select('*');
+		$this->db->from('tb_user');
+		$this->db->where('id_karyawan',$id);
+		return $query = $this->db->get()->num_rows();
+	}
+
 }

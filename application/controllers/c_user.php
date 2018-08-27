@@ -29,20 +29,50 @@ class c_user extends CI_Controller{
 	}
 
 	function tambah_aksi_user(){
-		$nama = $this->input->post('nama');
-		$password = $this->input->post('password');
-		$status_user = $this->input->post('status_user');
-		$id_karyawan = $this->input->post('id_karyawan');
+		$this->form_validation->set_rules('nama','Nama','required');
+		$this->form_validation->set_rules('id_karyawan','ID Karyawan','required');
+		$this->form_validation->set_rules('password','Password','required');
+		$this->form_validation->set_rules('status_user','Status','required');
 
-		$data=array(
-			'nama' => $nama,
-			'id_karyawan' => $id_karyawan,
-			'password' => $password,
-			'status_user' => $status_user
+		if ($this->form_validation->run()) {
+			$nama = $this->input->post('nama');
+			$password = $this->input->post('password');
+			$status_user = $this->input->post('status_user');
+			$id_karyawan = $this->input->post('id_karyawan');
 
-		);
-		$this->m_data_user->input_user($data, 'tb_user');
-		redirect('c_user/user');
+			if ($this->m_data_user->cek_id_karyawan($id_karyawan) == 0) {
+				$data=array(
+				'nama' => $nama,
+				'id_karyawan' => $id_karyawan,
+				'password' => $password,
+				'status_user' => $status_user
+
+				);
+				$this->m_data_user->input_user($data, 'tb_user');
+				redirect('c_user/user');
+				echo " <script>
+	                     alert('Registrasi sukses. Akun berhasil didaftarkan');
+	                     window.location='user'
+	                    </script>";
+			} else{
+				echo " <script>
+                     alert('Registrasi gagal. ID karyawan sudah terdaftar');
+                     window.location='tambah_user'
+                    </script>";
+				}
+ 	
+		} else {
+			$data=array (
+        	'status_user' => $this->session->userdata('status_user'),
+            'error_validation' => validation_errors(),
+            'user' => $this->m_data_user->tampil_user()
+        	);
+        $this->load->view('element/header',$data);	
+		$this->load->view('registerpage',$data);
+		$this->load->view('element/footer');
+		}
+
+		
 	}
 
 	function hapus_user($id){

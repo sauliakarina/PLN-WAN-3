@@ -14,26 +14,34 @@
                         <div class="form-group">
                           <label for="nama">Nama:<font color="red">*</font></label>
                           <input id="nama" type="text" style="width:500px" class="form-control" name="nama">
+                           <span class="help-block" style="color: red"> <?php $error = form_error('nama');
+                          echo "<font style='color: red;font-size: 15px' >$error</font>";?></span> 
                         </div>
                         <div class="form-group">
                           <label for="id_karyawan">ID Karyawan:<font color="red">*</font></label>
                           <input id="id_karyawan" type="text" style="width:500px" class="form-control" name="id_karyawan">
+                           <span class="help-block" style="color: red"> <?php $error = form_error('id_karyawan');
+                          echo "<font style='color: red;font-size: 15px' >$error</font>";?></span> 
                         </div>
                         <div class="form-group">
                           <label for="password">Password:<font color="red">*</font></label>
                           <input id="password" type="password" style="width:500px" class="form-control" name="password">
+                           <span class="help-block" style="color: red"> <?php $error = form_error('password');
+                          echo "<font style='color: red;font-size: 15px' >$error</font>";?></span> 
                         </div>
                         <!-- <div class="form-group">
                           <label for="comfirmpassword">Konfirmasi Password:<font color="red">*</font></td>
                           <input type="password" id="confirmpassword" name="password" style="width:500px" class="form-control">
                         </div> -->
                      <div class="form-group">
-                          <label for="prodi">Status :</label>
+                          <label for="prodi">Status :<font color="red">*</font></label>
                           <select class="form-control" id="jenis gangguan" name="status_user">
                             <option value="_">_____Pilih Status_____</option>
                             <option value="Admin">Admin</option>
                             <option value="User">User</option>
                           </select>
+                           <span class="help-block" style="color: red"> <?php $error = form_error('status_user');
+                          echo "<font style='color: red;font-size: 15px' >$error</font>";?></span> 
                         </div>
                         <hr/>
                           <button type="submit" class="btn btn-default btn-lg">Daftar </button>
