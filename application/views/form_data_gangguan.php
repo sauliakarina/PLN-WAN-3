@@ -35,7 +35,7 @@
                                         <tr>
                                             <td><?php echo $g->open_date ?></td>
                                             <td>
-                                              <button onclick='tampil_lokasi(<?php echo $g->sid ?>)' id="btn-edit" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#ModalZ">Area <?php echo $this->m_data_gangguan->tampil_layanan($g->sid)->lokasi ?></button></td>
+                                              <button onclick='tampil_lokasi(<?php echo $g->id_layanan ?>)' id="btn-edit" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#ModalZ">Area <?php echo $this->m_data_gangguan->tampil_layanan($g->id_layanan)->lokasi ?></button></td>
                                            <!--  <td><?php //echo anchor('c_gangguan/form_jenis_gangguan/'.$g->id_gangguan, $this->m_data_gangguan->tampil_jenisgangguan_byid($g->id_jenisgangguan)->jenis_gangguan); ?> </td> -->
                                             <td><?php if ($g->id_jenisgangguan=="16") {
                                               echo "<p style='color:'>Belum Teridentifikasi</p>";

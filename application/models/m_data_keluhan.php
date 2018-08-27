@@ -81,7 +81,7 @@ class M_data_keluhan extends CI_Model{
 	public function tampil_layanan($id)
 	{
 		$this->db->select('*');
-		$this->db->where('sid',$id);
+		$this->db->where('id_layanan',$id);
 		$this->db->where('isDelete', 'no');
 		$query = $this->db->get('tb_layanan');
 		return $query->row();
@@ -578,7 +578,7 @@ class M_data_keluhan extends CI_Model{
 	public function get_lokasi($sid)
 	{
 		$this->db->join('tb_jenislayanan', 'tb_jenislayanan.id_jenislayanan = tb_layanan.id_jenislayanan');
-		return $this->db->get_where('tb_layanan',array('sid'=>$sid))->row_array();
+		return $this->db->get_where('tb_layanan',array('id_layanan'=>$sid))->row_array();
 	}
 
 

@@ -41,10 +41,10 @@
                                             <td><?php echo $l->email ?></td>
                                             <td>
                                               <div class="btn-group">
-                                                 <form method='' action="<?php echo base_url('c_layanan/edit_layanan/'.$l->sid) ?>">
+                                                 <form method='' action="<?php echo base_url('c_layanan/edit_layanan/'.$l->id_layanan) ?>">
                                                     <button class='btn btn-default' type='submit'>Edit</button>
                                                 </form>
-                                                <button data-toggle="modal" data-target="#exampleModal" onclick="set_id(<?php echo $l->sid ?>)" class="btn btn-danger">Hapus</button>
+                                                <button data-toggle="modal" data-target="#exampleModal" onclick="set_id(<?php echo $l->id_layanan ?>)" class="btn btn-danger">Hapus</button>
                                               </div>
                                             </td>
                                         </tr>

@@ -35,7 +35,7 @@ class c_layanan extends CI_Controller{
 		'isDelete' => 'yes'
 		);
 		$where = array(
-		'sid' => $id
+		'id_layanan' => $id
 		);
 		$this->m_data_layanan->update_data($where,$data,'tb_layanan');
 		redirect('c_layanan/form_layanan');
@@ -43,7 +43,7 @@ class c_layanan extends CI_Controller{
 
 
 	 function edit_layanan($id){
-		$where = array('sid' => $id);
+		$where = array('id_layanan' => $id);
 		$data=array (
 			'status_user' => $this->session->userdata('status_user'),
         	'layanan' => $this->m_data_layanan->edit_data($where,'tb_layanan')->result(),
@@ -55,6 +55,7 @@ class c_layanan extends CI_Controller{
 	}
 
 	function update_layanan(){
+		$id_layanan = $this->input->post('id_layanan');
 		$sid = $this->input->post('sid');
 		$lokasi = $this->input->post('lokasi'); 
 		$kapasitas = $this->input->post('kapasitas'); 
@@ -72,12 +73,13 @@ class c_layanan extends CI_Controller{
 			'no_hp_pic' => $no_hp_pic,
 			'email' => $email,
 			'id_jenislayanan' => $id_jenislayanan,
-			'isDelete' => $isDelete
+			'isDelete' => $isDelete,
+			'sid' => $sid
 
 		);
 
 		$where = array(
-			'sid' => $sid
+			'id_layanan' => $id_layanan
 		);
 
 		$this->m_data_layanan->update_data($where,$data,'tb_layanan');

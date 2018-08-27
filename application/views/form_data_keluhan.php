@@ -33,7 +33,7 @@
                                         <tr>
                                             <td><?php echo $no++ ?></td>
                                             <td><?php echo $k->open_date ?></td> <!-- tanggal -->
-                                            <td> <button onclick='tampil_lokasi(<?php echo $k->sid ?>)' id="btn-edit" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#ModalZ">Area <?php echo $this->m_data_keluhan->tampil_layanan($k->sid)->lokasi ?></button> </td>
+                                            <td> <button onclick='tampil_lokasi(<?php echo $k->id_layanan ?>)' id="btn-edit" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#ModalZ">Area <?php echo $this->m_data_keluhan->tampil_layanan($k->id_layanan)->lokasi ?></button> </td>
                                             <td><?php if ($k->id_jeniskeluhan=="10") {
                                               echo "<p style='color:'>Belum Teridentifikasi</p>";
                                               } else {

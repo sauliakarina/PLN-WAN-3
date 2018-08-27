@@ -12,11 +12,11 @@
       <form action="<?php echo base_url();?>c_gangguan/update_gangguan" method="post">             
       <div class="form-group">
       <label for="area">Area: </label>
-      <select id="area" name="sid" class="form-control">
-       <option value="<?php echo $g->sid ?>">--<?php echo $this->m_data_gangguan->tampil_layanan($g->sid)->lokasi ?>--</option>
+      <select id="area" name="id_layanan" class="form-control">
+       <option value="<?php echo $g->id_layanan ?>">--<?php echo $this->m_data_gangguan->tampil_layanan($g->id_layanan)->lokasi ?>--</option>
         <?php 
              foreach($get_layanan as $gl){ 
-               echo "<option  value='$gl->sid'>$gl->lokasi</option>";
+               echo "<option  value='$gl->id_layanan'>$gl->lokasi</option>";
                }
          ?>
     </select>

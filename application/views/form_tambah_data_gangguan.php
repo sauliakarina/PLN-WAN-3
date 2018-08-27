@@ -11,11 +11,11 @@
       <form action="<?php echo base_url();?>c_gangguan/tambah_aksi_gangguan" method="post">        
       <div class="form-group">
       <label for="area">Lokasi : </label>
-      <select id="area" name="sid" class="form-control">
-        <option value="_">_____Pilih Area_____</option>
+      <select id="area" name="id_layanan" class="form-control">
+        <option value="">_____Pilih Area_____</option>
         <?php 
             foreach($get_layanan as $gl){ 
-               echo "<option  value='$gl->sid'>$gl->lokasi</option>";
+               echo "<option  value='$gl->id_layanan'>$gl->lokasi</option>";
                    }
                 ?>
       </select>

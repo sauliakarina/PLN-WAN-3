@@ -12,8 +12,8 @@
       <form action="<?php echo base_url();?>c_keluhan/update_keluhan" method="post">
       <div class="form-group">
       <label for="area">Area : </label>
-      <select id="area" name="sid" class="form-control">
-        <option value="<?php echo $k->sid ?>">--<?php echo $this->m_data_keluhan->tampil_layanan($k->sid)->lokasi ?>--</option>
+      <select id="area" name="id_layanan" class="form-control">
+        <option value="<?php echo $k->id_layanan ?>">--<?php echo $this->m_data_keluhan->tampil_layanan($k->id_layanan)->lokasi ?>--</option>
         <?php 
              foreach($get_layanan as $gl){ 
                echo "<option  value='$gl->sid'>$gl->lokasi</option>";

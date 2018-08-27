@@ -106,7 +106,7 @@ class c_gangguan extends CI_Controller{
 	}
 
 	function tambah_aksi_gangguan(){
-		$sid = $this->input->post('sid');
+		$id_layanan = $this->input->post('id_layanan');
 		$id_jenisgangguan= $this->input->post('id_jenisgangguan');
 		$deskripsi_jenisgangguan = $this->input->post('deskripsi_jenisgangguan');
 		$solusi_gangguan = $this->input->post('solusi_gangguan');
@@ -132,7 +132,7 @@ class c_gangguan extends CI_Controller{
 		}
 		
 		$data=array(
-			'sid' => $sid,
+			'id_layanan' => $id_layanan,
 			'id_jenisgangguan' => $id_jenisgangguan,
 			'deskripsi_jenisgangguan' => $deskripsi_jenisgangguan,
 			'solusi_gangguan' => $solusi_gangguan,
@@ -176,7 +176,7 @@ class c_gangguan extends CI_Controller{
 	}
 
 	function update_gangguan(){
-		$sid = $this->input->post('sid');
+		$id_layanan = $this->input->post('id_layanan');
 		$id_jenisgangguan = $this->input->post('id_jenisgangguan');
 		$deskripsi_jenisgangguan = $this->input->post('deskripsi_jenisgangguan');
 		$solusi_gangguan = $this->input->post('solusi_gangguan');
@@ -204,7 +204,7 @@ class c_gangguan extends CI_Controller{
 
 		
 		$data=array(
-			'sid' => $sid,
+			'id_layanan' => $id_layanan,
 			'id_jenisgangguan' => $id_jenisgangguan,
 			'deskripsi_jenisgangguan' => $deskripsi_jenisgangguan,
 			'solusi_gangguan' => $solusi_gangguan,
