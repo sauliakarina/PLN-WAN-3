@@ -85,7 +85,7 @@
                                 <form action="<?php echo base_url();?>c_gangguan/tampil_searchgangguan">
                                   <button class='btn btn-outline-primary' type='submit' style="margin-bottom: 15px"><i class="fas fa-search" style="margin-right: 10px"></i>Menu Pencarian</button>
                                 </form>
-                                <a class="pull-right btn btn-primary btn-xs" href="<?php echo site_url()?>c_gangguan/createxls"><i class="fa fa-file-excel-o"></i> Export Data</a>
+                                
                             </div>
                         </div>
                     </div>
