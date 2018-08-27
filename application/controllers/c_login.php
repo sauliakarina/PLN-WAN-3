@@ -29,10 +29,10 @@ class C_login extends CI_Controller{
     }
 
     function aksi_login(){
-        $id_karyawan = $this->input->post('id_karyawan');
+        $no_karyawan = $this->input->post('no_karyawan');
         $password = $this->input->post('password');
         $where = array(
-            'id_karyawan' => $id_karyawan,
+            'no_karyawan' => $no_karyawan,
             'password' => $password
 
             );
@@ -44,7 +44,7 @@ class C_login extends CI_Controller{
             if($cek > 0){
                 foreach ($cek2->result() as $sess ) {
                     $sess_data['logged_in'] = 'Sudah Masuk';
-                    $sess_data['id_karyawan'] = $sess->id_karyawan;
+                    $sess_data['no_karyawan'] = $sess->no_karyawan;
                     $sess_data['status_user'] = $sess->status_user;
                 }
                 $this->session->set_userdata($sess_data); 
