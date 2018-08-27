@@ -192,12 +192,12 @@ class c_layanan extends CI_Controller{
 				$this->m_data_layanan->input_layanan($data, 'tb_layanan');
 				redirect('c_layanan/form_layanan');
 				echo " <script>
-                     alert('Registrasi sukses. Akun berhasil didaftarkan');
+                     alert('Registrasi sukses. Layanan berhasil ditambahkan');
                      window.location='form_layanan'
                     </script>";
 			} else{
 				echo " <script>
-                     alert('Registrasi gagal. Akun sudah didaftarkan');
+                     alert('Registrasi gagal. SID sudah didaftarkan');
                      window.location='form_tambah_layanan'
                     </script>";
 			}

@@ -82,7 +82,7 @@ class c_keluhan extends CI_Controller{
 			$end_date = new DateTime($close_date.' '.$close_time);
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
-			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i;
+			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
 		} else {
 			$input_durasi = '0:00';
 		}
@@ -216,9 +216,9 @@ class c_keluhan extends CI_Controller{
 			$end_date = new DateTime($close_date.' '.$close_time);
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
-			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i;
+			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
 		} else {
-			$input_durasi = '0:00';
+			$input_durasi = '0:00:00';
 		}
 
 		
