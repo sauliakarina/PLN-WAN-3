@@ -122,8 +122,7 @@ class c_gangguan extends CI_Controller{
 		$bulan = date("m", strtotime($open_date)); 
 		$tahun = date("Y", strtotime($open_date)); 
 
-		$this->kirim_email();
-
+		
 
 		if ($close_date != "" && $close_time !="") {
 			$start_date = new DateTime($open_date.' '.$open_time);
@@ -153,6 +152,9 @@ class c_gangguan extends CI_Controller{
 		);
 		$this->m_data_gangguan->input_gangguan($data, 'tb_gangguan');
 		redirect('c_gangguan/form_data_gangguan');
+		
+		$this->kirim_email();
+
 	}
 
 	function hapus_gangguan($id){
