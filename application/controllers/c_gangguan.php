@@ -107,6 +107,7 @@ class c_gangguan extends CI_Controller{
 	}
 
 	function tambah_aksi_gangguan(){
+
 		$id_layanan = $this->input->post('id_layanan');
 		$id_jenisgangguan= $this->input->post('id_jenisgangguan');
 		$deskripsi_jenisgangguan = $this->input->post('deskripsi_jenisgangguan');
@@ -120,6 +121,8 @@ class c_gangguan extends CI_Controller{
 
 		$bulan = date("m", strtotime($open_date)); 
 		$tahun = date("Y", strtotime($open_date)); 
+
+		$this->kirim_email();
 
 
 		if ($close_date != "" && $close_time !="") {
@@ -640,50 +643,51 @@ class c_gangguan extends CI_Controller{
 	}
 
 
-	 /*public function createXLS() {
-	 	//require(APPPATH.'third_party/PHPExcel-1.8/Classes/PHPExcel.php');
-		// create file name
-        $fileName = 'data.xlsx';  
-		// load excel library
-        $this->load->library('excel');
-
-    	//include APPPATH.'third_party/PHPExcel/PHPExcel.php';
-        $gangguan = $this->m_data_gangguan->tampil_gangguan()
-        $objPHPExcel = new PHPExcel();
-        $objPHPExcel->setActiveSheetIndex(0);
-        // set Header
-        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Area');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Jenis Gangguan');
-        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Lokasi');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Penyebab');  
-        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Solusi'); 
-        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Open Date');  
-        $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Open Time'); 
-        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Close Date');
-        $objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Close Time'); 
-        $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Durasi');        
-        // set Row
-        $rowCount = 2;
-        foreach ($gangguan as $element) {
-            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $element['sid']);
-            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $element['id_jenisgangguan']);
-            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $element['lokasi']);
-            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $element['penyebab']);
-            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $element['solusi']);
-            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $element['open_date']);
-            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $element['open_time']);
-            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $element['close_date']);
-            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $element['close_time']);
-            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $element['durasi']);
-            $rowCount++;
+	public function kirim_email()
+    {
+        // Konfigurasi email.
+        $config = [
+               'useragent' => 'CodeIgniter',
+               'protocol'  => 'smtp',
+               'mailpath'  => '/usr/sbin/sendmail',
+               'smtp_host' => 'ssl://smtp.gmail.com',
+               'smtp_user' => 'moncandani@gmail.com',   // Ganti dengan email gmail Anda.
+               'smtp_pass' => 'b1819djj',             // Password gmail Anda.
+               'smtp_port' => 465,
+               'smtp_keepalive' => TRUE,
+               'smtp_crypto' => 'SSL',
+               'wordwrap'  => TRUE,
+               'wrapchars' => 80,
+               'mailtype'  => 'html',
+               'charset'   => 'utf-8',
+               'validate'  => TRUE,
+               'crlf'      => "\r\n",
+               'newline'   => "\r\n",
+           ];
+ 
+        // Load library email dan konfigurasinya.
+        $this->load->library('email', $config);
+ 
+        // Pengirim dan penerima email.
+        $this->email->from('moncandani@gmail.com', 'Monica Ratna A');    // Email dan nama pegirim.
+        $this->email->to('sauliakarina@gmail.com');                       // Penerima email.
+ 
+        
+        // Subject email.
+        $this->email->subject('Kirim Email pada CodeIgniter');
+ 
+        // Isi email. Bisa dengan format html.
+        $this->email->message('data gangguan ditambahkan');
+ 
+        if ($this->email->send())
+        {
+            echo 'Sukses! email berhasil dikirim.';
         }
-        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-        $objWriter->save(ROOT_UPLOAD_IMPORT_PATH.$fileName);
-		// download file
-        header("Content-Type: application/vnd.ms-excel");
-        redirect(HTTP_UPLOAD_IMPORT_PATH.$fileName);        
+        else
+        {
+            echo 'Error! email tidak dapat dikirim.';
+        }
     }
-    */
 
 
 
