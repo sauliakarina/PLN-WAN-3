@@ -6,6 +6,7 @@ class c_gangguan extends CI_Controller{
 		parent::__construct();		
 		$this->load->model('m_data_gangguan');
         $this->load->helper('url');
+  
 	}
 
 	public function form_data_gangguan() {

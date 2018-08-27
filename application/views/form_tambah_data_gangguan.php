@@ -81,7 +81,7 @@
         <div class='col-md-6'>
             <div class="form-group">
               <label for="date">Open Time :  </label>
-                    <input type='time' class="form-control" name="open_time" />
+                    <input type='time' id="timepicker" class="form-control" name="open_time" />
                 
                 </div>
             </div>
@@ -136,3 +136,11 @@
         </div>
     </div>
 </main>
+
+<script type="text/javascript">
+
+  $('#timepicker').pickatime({
+    format: 'h:i:s'
+})
+
+</script>

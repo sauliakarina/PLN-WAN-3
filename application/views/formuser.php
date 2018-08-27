@@ -93,8 +93,6 @@
     $(document).ready( function () {
     $('#example').DataTable();
 } );
-    $('#example').dataTable({
-  });
 </script>
 
     <script>
