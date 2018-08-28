@@ -31,7 +31,7 @@
                                             <td><?php echo $p->ket_progress ?></td>
                                             <td>
                                               <div class="btn-group">
-                                               <button onclick='edit_progress(<?php echo $p->id_progress ?>)' id="btn-edit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalTambah">Edit</button>
+                                               <button onclick='edit_progress(<?php echo $p->id_progress ?>)' id="btn-edit" class="btn btn-default btn-md" data-toggle="modal" data-target="#ModalEdit">Edit</button>
                                             <button data-toggle="modal" data-target="#exampleModal" onclick="set_id(<?php echo $p->id_progress?>)" class="btn btn-danger">Hapus</button>
                                           </div>
                                           </td>
@@ -118,7 +118,7 @@
                                     </select>
                                   </div>
 
-                                  <div class="form-group" id="jenisgangguan">
+                                  <div class="form-group" id="jenisgangguan" style="display: none;">
                                     <label for="prodi">Jenis Gangguan :</label>
                                     <select class="form-control"  id="id_jenisgangguan" name="id_jenisgangguan">
                                       <option value="<?php echo $this->m_data_gangguan->get_gangguan_byid($id)->id_jenisgangguan ?>">--<?php echo $this->m_data_gangguan->tampil_jenisgangguan_byid($this->m_data_gangguan->get_gangguan_byid($id)->id_jenisgangguan)->jenis_gangguan ?>--</option>
@@ -171,45 +171,51 @@
 
 
      <!-- Modal Edit Progress -->
-              <div class="modal fade" id="ModalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                       <div class="modal-content">
                           <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Tambah Progress Gangguan</h5>
+                              <h5 class="modal-title" id="exampleModalLabel">Edit Progress Gangguan</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                               </button>
                           </div>
                           <div class="modal-body"> 
-                              <form action="<?php echo base_url();?>c_gangguan/tambah_aksi_progress" method="post">
+                              <form action="<?php echo base_url();?>c_gangguan/update_progress" method="post">
                                   <div class="row">
                                  <div class='col-md-12'>
                                    <div class="form-group">
                                        <label for="date"> Waktu :  </label>
                                        <!-- $id = id_gangguan -->
                                        <input type='hidden' id="id_gangguan" name="id_gangguan" class="form-control" value="<?php echo $id ?>" />
+                                       <input type='hidden' id="id_progress" name="id_progress" class="form-control" value="<?php echo $p->id_progress ?>" />
                                        <input type='hidden' id="open_date" name="open_date" class="form-control" value="<?php echo $this->m_data_gangguan->get_gangguan_byid($id)->open_date?>" />
                                        <input type='hidden' id="open_time" name="open_time" class="form-control" value="<?php echo $this->m_data_gangguan->get_gangguan_byid($id)->open_time?>" />
-                                       <input type='time' class="form-control" name="waktu" />
+                                       <input type='time' class="form-control" id="waktu" name="waktu" value="<?php echo $p->waktu ?>"/>
                           
                                    </div>
                                  </div>
                               </div>
                                   <div class="form-group">
                                     <label for="nama">Keterangan </label>
-                                    <textarea rows="3" class="form-control" name="ket_progress"></textarea>
+                                    <textarea rows="3" class="form-control" id="ket_progress" name="ket_progress"><?php echo $p->ket_progress ?></textarea>
                                   </div>
 
                                  <div class="form-group">
                                     <label for="prodi"> Status :</label>
-                                    <select class="form-control" id="status_progress" name="status_progress">
-                                      <option value="1">_____Pilih Status_____</option>
+                                    <select class="form-control" id="status_progress_edit" name="status_progress">
+                                      <?php if ($p->status_progress == "1") {
+                                        echo "<option value='1'>--Penanganan--</option>";
+                                      } else {
+                                        echo "<option value='2'>--Selesai--</option>";
+                                      }
+                                       ?>
                                       <option value="1">Penanganan </option>
                                       <option value="2">Selesai </option>
                                     </select>
                                   </div>
 
-                                  <div class="form-group" id="jenisgangguan">
+                                  <div class="form-group" id="jenisgangguan_edit" style="display: none;">
                                     <label for="prodi">Jenis Gangguan :</label>
                                     <select class="form-control"  id="id_jenisgangguan" name="id_jenisgangguan">
                                       <option value="<?php echo $this->m_data_gangguan->get_gangguan_byid($id)->id_jenisgangguan ?>">--<?php echo $this->m_data_gangguan->tampil_jenisgangguan_byid($this->m_data_gangguan->get_gangguan_byid($id)->id_jenisgangguan)->jenis_gangguan ?>--</option>
@@ -221,7 +227,7 @@
                                     </select>
                                   </div>
     
-                                 <div class="row" id="penyebabgangguan" style="display: none;">
+                                 <div class="row" id="penyebabgangguan_edit" style="display: none;">
                                 <div class='col-md-12'>
                                     <div class="form-group">
                                       <label for="date">Penyebab :  </label>
@@ -230,7 +236,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row" id="solusigangguan" style="display: none;">
+                                <div class="row" id="solusigangguan_edit" style="display: none;">
                                 <div class='col-md-12'>
                                     <div class="form-group">
                                       <label for="date">Solusi :  </label>
@@ -239,7 +245,7 @@
                                         </div>
                                     </div>
                                 </div>
-                              <div class="row"  id="lokasigangguan" style="display: none;">
+                              <div class="row"  id="lokasigangguan_edit" style="display: none;">
                               <div class='col-md-12'>
                                   <div class="form-group">
                                     <label for="date">Lokasi Gangguan :  </label>
@@ -253,7 +259,7 @@
 
                           </div> <!-- modal body -->
                           <div class="modal-footer">
-                              <button type="submit" class="btn btn-default btn-md"> Tambah </button>
+                              <button type="submit" class="btn btn-default btn-md"> Simpan</button>
                             </form>
                           </div>
                       </div>
@@ -313,6 +319,49 @@
           $('#lokasigangguan').attr('style','display:none !important');
           $('#solusigangguan').attr('style','display:none !important');
           $('#jenisgangguan').attr('style','display:none !important');
+
+        }
+      });
+
+     function update_progress(id) {
+
+      $.ajax({
+        url: "<?php echo base_url('c_gangguan/ambil_data_progress/') ?>/" + id,
+        type: "GET",
+        dataType: "JSON",
+        success: function(data) {
+          $('[name="id_gangguan"]').val(data.id_gangguan);
+          $('[name="id_progress"]').val(data.id_progress);
+          $('[name="waktu"]').val(data.waktu);
+          $('[name="open_date"]').val(data.open_date);
+          $('[name="open_time"]').val(data.open_time);
+          $('[name="ket_progress"]').val(data.ket_progress);
+          $('[name="status_progress"]').val(data.status_progress);
+          $('[name="id_jenisgangguan"]').val(data.id_jenisgangguan);
+          $('[name="penyebab_gangguan"]').val(data.penyebab_gangguan);
+          $('[name="lokasi_gangguan"]').val(data.lokasi_gangguan);
+          $('[name="solusi_gangguan"]').val(data.solusi_gangguan);
+          
+          $('#ModalEdit').modal('show');
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log('gagal mengambil data');
+        }
+      });
+    }
+
+    $('#status_progress_edit').on('change', function(){
+        var val = this.value;
+        if(val == "2"){
+          $('#penyebabgangguan_edit').attr('style','display:block !important');
+          $('#lokasigangguan_edit').attr('style','display:block !important');
+          $('#solusigangguan_edit').attr('style','display:block !important');
+          $('#jenisgangguan_edit').attr('style','display:block !important');
+        }else if(val =="1"){
+          $('#penyebabgangguan_edit').attr('style','display:none !important');
+          $('#lokasigangguan_edit').attr('style','display:none !important');
+          $('#solusigangguan_edit').attr('style','display:none !important');
+          $('#jenisgangguan_edit').attr('style','display:none !important');
 
         }
       });

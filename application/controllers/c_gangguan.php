@@ -422,7 +422,13 @@ class c_gangguan extends CI_Controller{
 	//untuk tambah progress
 	public function ambil_data_gangguan($id)
 	{
-		$data = $this->crud->get_gangguan_byid($id);
+		$data = $this->m_data_gangguan->get_gangguan_byid($id);
+		echo json_encode($data);
+	}
+
+	public function ambil_data_progress($id)
+	{
+		$data = $this->m_data_gangguan->get_progress_byid($id);
 		echo json_encode($data);
 	}
 
