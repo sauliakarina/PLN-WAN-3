@@ -83,7 +83,7 @@
                                             </div>
                                         </li>    
                                     ";
-                                } elseif($status_user=='User' && $status_user=='Petugas'){
+                                } elseif($status_user=='User' || $status_user=='Petugas'){
                                     echo"
                                     <li class='nav-item'>
                                     <a class='nav-link' href=".base_url('c_main/home_user')." style='color:white'>BERANDA</a></li>";
