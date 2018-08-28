@@ -3,7 +3,7 @@
         <div class="container" >
             <div class="row">
                 <div class="col">
-                    <h4  class="page-head-line">Pencarian Gangguan</h4>
+                    <h4  class="page-head-line">Pencarian Keluhan</h4>
                 </div>
             </div>
             <center>
