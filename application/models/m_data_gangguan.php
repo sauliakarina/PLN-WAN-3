@@ -20,8 +20,8 @@ class M_data_gangguan extends CI_Model{
 		$this->db->select('*');
 		$this->db->where('isDelete', 'no');
 		$this->db->where('isSolved', 'no');
-		$this->db->order_by('id_gangguan', 'DESC');
-		//$this->db->order_by('open_date', 'DESC');
+		//$this->db->order_by('id_gangguan', 'DESC');
+		$this->db->order_by('open_date', 'DESC');
 		//$this->db->order_by('name', 'ASC');
 		//tambah sort by open date and open time
 		$query = $this->db->get('tb_gangguan');
@@ -319,12 +319,12 @@ class M_data_gangguan extends CI_Model{
 	{
 		$this->db->select('*');
 		if ($input=='1') {
-			$this->db->where('durasi <','04:00');
+			$this->db->where('cari_durasi <','400');
 		} elseif ($input=='2') {
-			$this->db->where('durasi >','04:00');
-			$this->db->where('durasi <','07:00');
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
 		} elseif ($input=='3') {
-			$this->db->where('durasi >','07:00');
+			$this->db->where('cari_durasi >','700');
 		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_gangguan');

@@ -173,10 +173,17 @@ class M_data_keluhan extends CI_Model{
 		}
 	}
 
-	  public function cari_durasi($input)
+	public function cari_durasi($input)
 	{
 		$this->db->select('*');
-		$this->db->where('durasi',$input);
+		if ($input=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -581,5 +588,6 @@ class M_data_keluhan extends CI_Model{
 		return $this->db->get_where('tb_layanan',array('id_layanan'=>$sid))->row_array();
 	}
 
+	
 
 }

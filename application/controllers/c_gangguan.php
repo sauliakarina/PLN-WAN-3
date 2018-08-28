@@ -206,7 +206,7 @@ class c_gangguan extends CI_Controller{
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
 			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
-			$cari_durasi = $durasi->h+$durasi_jam;
+			$cari_durasi = $durasi->h+$durasi_jam.$durasi->i;
 		} else {
 			$input_durasi = '0:00:00';
 		}
@@ -672,7 +672,7 @@ class c_gangguan extends CI_Controller{
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
 			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
-			$cari_durasi = $durasi->h+$durasi_jam;
+			$cari_durasi = $durasi->h+$durasi_jam.$durasi->i;
 		} else {
 			$input_durasi = '0:00:00';
 		}
