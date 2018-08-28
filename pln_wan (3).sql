@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2018 at 04:06 AM
+-- Generation Time: Aug 27, 2018 at 10:36 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -39,6 +39,7 @@ CREATE TABLE `tb_gangguan` (
   `close_date` date DEFAULT NULL,
   `close_time` time DEFAULT NULL,
   `durasi` varchar(20) DEFAULT NULL,
+  `cari_durasi` varchar(20) DEFAULT NULL,
   `isDelete` varchar(10) DEFAULT 'no',
   `bulan` varchar(10) DEFAULT NULL,
   `tahun` varchar(10) DEFAULT NULL,
@@ -49,8 +50,9 @@ CREATE TABLE `tb_gangguan` (
 -- Dumping data for table `tb_gangguan`
 --
 
-INSERT INTO `tb_gangguan` (`id_gangguan`, `id_jenisgangguan`, `id_layanan`, `deskripsi_jenisgangguan`, `lokasi_gangguan`, `penyebab_gangguan`, `solusi_gangguan`, `open_date`, `open_time`, `close_date`, `close_time`, `durasi`, `isDelete`, `bulan`, `tahun`, `isSolved`) VALUES
-(68, 5, 3, 'S', 'a', 'a', 'a', '2018-12-08', '08:00:00', '0000-00-00', '00:00:00', '0:00', 'no', '12', '2018', 'no');
+INSERT INTO `tb_gangguan` (`id_gangguan`, `id_jenisgangguan`, `id_layanan`, `deskripsi_jenisgangguan`, `lokasi_gangguan`, `penyebab_gangguan`, `solusi_gangguan`, `open_date`, `open_time`, `close_date`, `close_time`, `durasi`, `cari_durasi`, `isDelete`, `bulan`, `tahun`, `isSolved`) VALUES
+(77, 16, 25, '', '', '', '', '2018-08-01', '08:00:00', '2018-08-01', '09:00:00', '1:0:0', NULL, 'no', '08', '2018', 'no'),
+(78, 16, 20, '', '', '', '', '2018-08-04', '08:00:00', '2018-08-04', '09:00:00', '1:0:0', '1', 'no', '08', '2018', 'no');
 
 -- --------------------------------------------------------
 
@@ -82,7 +84,8 @@ INSERT INTO `tb_jenisgangguan` (`id_jenisgangguan`, `jenis_gangguan`, `ket_gangg
 (13, 'Terminal', '', 'no', 'yes'),
 (14, 'Lain-lain', '', 'no', 'yes'),
 (15, 'Switch', '', 'no', 'yes'),
-(16, 'Belum Diketahui', 'Jenis gangguan belum dikonfirmasi', 'no', 'no');
+(16, 'Belum Diketahui', 'Jenis gangguan belum dikonfirmasi', 'no', 'no'),
+(17, '', '', 'no', 'yes');
 
 -- --------------------------------------------------------
 
@@ -106,7 +109,8 @@ INSERT INTO `tb_jeniskeluhan` (`id_jeniskeluhan`, `jenis_keluhan`, `ket_keluhan`
 (3, 'Listrik setempat padam', '', 'no', 'yes'),
 (4, 'IP yg di tunjuk monitoring down', '', 'no', 'yes'),
 (5, 'Lain-lain', '', 'no', 'yes'),
-(10, 'Belum Diketahui', 'jenis keluhan belum dikonfirmasi', 'no', 'no');
+(10, 'Belum Diketahui', 'jenis keluhan belum dikonfirmasi', 'no', 'no'),
+(11, '', '', 'no', 'yes');
 
 -- --------------------------------------------------------
 
@@ -147,10 +151,19 @@ CREATE TABLE `tb_keluhan` (
   `close_date` date DEFAULT NULL,
   `close_time` time DEFAULT NULL,
   `durasi` varchar(20) DEFAULT NULL,
+  `cari_durasi` varchar(20) DEFAULT NULL,
   `isDelete` varchar(10) NOT NULL DEFAULT 'no',
   `bulan` varchar(10) DEFAULT NULL,
   `tahun` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_keluhan`
+--
+
+INSERT INTO `tb_keluhan` (`id_keluhan`, `id_jeniskeluhan`, `id_layanan`, `deskripsi_jeniskeluhan`, `penyebab_keluhan`, `solusi_keluhan`, `open_date`, `open_time`, `close_date`, `close_time`, `durasi`, `cari_durasi`, `isDelete`, `bulan`, `tahun`) VALUES
+(12, 4, 8, 'a', 'a', 'a', '2017-10-10', '06:00:00', '2017-10-10', '07:20:10', '1:20:10', NULL, 'no', '10', '2017'),
+(13, 10, 20, '', '', '', '2018-08-04', '08:00:00', '2018-08-04', '09:00:00', '1:0:0', '1', 'no', '08', '2018');
 
 -- --------------------------------------------------------
 
@@ -217,6 +230,13 @@ CREATE TABLE `tb_progress` (
   `waktu` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_progress`
+--
+
+INSERT INTO `tb_progress` (`id_progress`, `id_gangguan`, `status_progress`, `ket_progress`, `waktu`) VALUES
+(35, 78, 1, 'a', '10:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -224,7 +244,8 @@ CREATE TABLE `tb_progress` (
 --
 
 CREATE TABLE `tb_user` (
-  `id_karyawan` varchar(20) NOT NULL,
+  `id_karyawan` int(100) NOT NULL,
+  `no_karyawan` varchar(20) DEFAULT NULL,
   `nama` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `status_user` varchar(50) NOT NULL,
@@ -235,10 +256,9 @@ CREATE TABLE `tb_user` (
 -- Dumping data for table `tb_user`
 --
 
-INSERT INTO `tb_user` (`id_karyawan`, `nama`, `password`, `status_user`, `isDelete`) VALUES
-('1234', 'dd', '123', 'Admin', 'yes'),
-('2', 'cobaq', '2', 'User', 'no'),
-('333', 's', '333', 'Admin', 'no');
+INSERT INTO `tb_user` (`id_karyawan`, `no_karyawan`, `nama`, `password`, `status_user`, `isDelete`) VALUES
+(22, '22', 'User', '22', 'User', 'no'),
+(1235, '333', 'Admin', '333', 'Admin', 'no');
 
 --
 -- Indexes for dumped tables
@@ -306,17 +326,17 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_gangguan`
 --
 ALTER TABLE `tb_gangguan`
-  MODIFY `id_gangguan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id_gangguan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 --
 -- AUTO_INCREMENT for table `tb_jenisgangguan`
 --
 ALTER TABLE `tb_jenisgangguan`
-  MODIFY `id_jenisgangguan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_jenisgangguan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `tb_jeniskeluhan`
 --
 ALTER TABLE `tb_jeniskeluhan`
-  MODIFY `id_jeniskeluhan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_jeniskeluhan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tb_jenislayanan`
 --
@@ -326,7 +346,7 @@ ALTER TABLE `tb_jenislayanan`
 -- AUTO_INCREMENT for table `tb_keluhan`
 --
 ALTER TABLE `tb_keluhan`
-  MODIFY `id_keluhan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_keluhan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `tb_layanan`
 --
@@ -336,7 +356,12 @@ ALTER TABLE `tb_layanan`
 -- AUTO_INCREMENT for table `tb_progress`
 --
 ALTER TABLE `tb_progress`
-  MODIFY `id_progress` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_progress` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+--
+-- AUTO_INCREMENT for table `tb_user`
+--
+ALTER TABLE `tb_user`
+  MODIFY `id_karyawan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1237;
 --
 -- Constraints for dumped tables
 --
