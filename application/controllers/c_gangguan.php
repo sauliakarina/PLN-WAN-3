@@ -456,7 +456,7 @@ class c_gangguan extends CI_Controller{
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
 			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i;
-			$cari_durasi = $durasi->h+$durasi_jam.$durasi->i
+			$cari_durasi = $durasi->h+$durasi_jam.$durasi->i;
 
 			$data=array(
 			'close_date' => $close_date,
@@ -527,7 +527,7 @@ class c_gangguan extends CI_Controller{
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
 			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i;
-			$cari_durasi = $durasi->h+$durasi_jam.$durasi->i
+			$cari_durasi = $durasi->h+$durasi_jam.$durasi->i;
 
 			$data=array(
 				'close_date' => $close_date,
