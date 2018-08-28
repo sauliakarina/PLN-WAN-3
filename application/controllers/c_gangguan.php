@@ -206,7 +206,7 @@ class c_gangguan extends CI_Controller{
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
 			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
-			$cari_durasi = $durasi->h+$durasi_jam;
+			$cari_durasi = $durasi->h+$durasi_jam.$durasi->i;
 		} else {
 			$input_durasi = '0:00:00';
 		}
@@ -563,7 +563,7 @@ class c_gangguan extends CI_Controller{
 			} elseif ($id_jenisgangguan=='' && $sid=='' && $bulan=='' && $durasi=='') {
 				$hasil= $this->m_data_gangguan->cari_tahun($tahun);
 			} elseif ($id_jenisgangguan=='' && $sid=='' && $bulan=='' && $tahun=='') {
-				$hasil= $this->m_data_gangguan->coba_cari_durasi($durasi);
+				$hasil= $this->m_data_gangguan->cari_durasi($durasi);
 			} elseif ($bulan =='' && $tahun =='' && $durasi =='') {
 				$hasil= $this->m_data_gangguan->cari_sid_jg($sid,$id_jenisgangguan);
 			}
@@ -672,7 +672,7 @@ class c_gangguan extends CI_Controller{
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
 			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
-			$cari_durasi = $durasi->h+$durasi_jam;
+			$cari_durasi = $durasi->h+$durasi_jam.$durasi->i;
 		} else {
 			$input_durasi = '0:00:00';
 		}
