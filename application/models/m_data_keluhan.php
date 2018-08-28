@@ -119,6 +119,8 @@ class M_data_keluhan extends CI_Model{
 		$query = $this->db->get('tb_layanan');
 		return $query->row();
 	}*/
+
+/*==pencarian==*/
   public function cari_sid($input)
 	{
 		$this->db->select('*');
@@ -241,7 +243,14 @@ class M_data_keluhan extends CI_Model{
 	{
 		$this->db->select('*');
 		$this->db->where('id_layanan',$input1);
-		$this->db->where('durasi',$input2);
+		if ($input2=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input2=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input2=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -283,7 +292,14 @@ class M_data_keluhan extends CI_Model{
 	{
 		$this->db->select('*');
 		$this->db->where('id_jeniskeluhan',$input1);
-		$this->db->where('durasi',$input2);
+	if ($input2=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input2=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input2=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -313,7 +329,14 @@ class M_data_keluhan extends CI_Model{
 	{
 		$this->db->select('*');
 		$this->db->where('bulan',$input1);
-		$this->db->where('durasi',$input2);
+	if ($input2=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input2=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input2=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -327,7 +350,14 @@ class M_data_keluhan extends CI_Model{
 	{
 		$this->db->select('*');
 		$this->db->where('tahun',$input1);
-		$this->db->where('durasi',$input2);
+	if ($input2=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input2=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input2=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -372,7 +402,14 @@ class M_data_keluhan extends CI_Model{
 		$this->db->select('*');
 		$this->db->where('id_layanan',$input1);
 		$this->db->where('id_jeniskeluhan',$input2);
-		$this->db->where('durasi',$input3);
+	if ($input3=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input3=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input3=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -402,7 +439,14 @@ class M_data_keluhan extends CI_Model{
 		$this->db->select('*');
 		$this->db->where('id_jeniskeluhan',$input1);
 		$this->db->where('bulan',$input2);
-		$this->db->where('durasi',$input3);
+	if ($input3=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input3=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input3=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -418,7 +462,14 @@ class M_data_keluhan extends CI_Model{
 		$this->db->select('*');
 		$this->db->where('id_jeniskeluhan',$input1);
 		$this->db->where('tahun',$input2);
-		$this->db->where('durasi',$input3);
+		if ($input3=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input3=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input3=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -433,7 +484,14 @@ class M_data_keluhan extends CI_Model{
 		$this->db->select('*');
 		$this->db->where('bulan',$input1);
 		$this->db->where('tahun',$input2);
-		$this->db->where('durasi',$input3);
+		if ($input3=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input3=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input3=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -463,7 +521,14 @@ class M_data_keluhan extends CI_Model{
 		$this->db->select('*');
 		$this->db->where('id_layanan',$input1);
 		$this->db->where('bulan',$input2);
-		$this->db->where('durasi',$input3);
+		if ($input3=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input3=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input3=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -478,7 +543,14 @@ class M_data_keluhan extends CI_Model{
 		$this->db->select('*');
 		$this->db->where('id_layanan',$input1);
 		$this->db->where('tahun',$input2);
-		$this->db->where('durasi',$input3);
+		if ($input3=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input3=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input3=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -510,7 +582,14 @@ class M_data_keluhan extends CI_Model{
 		$this->db->where('id_layanan',$input1);
 		$this->db->where('id_jeniskeluhan',$input2);
 		$this->db->where('bulan',$input3);
-		$this->db->where('durasi',$input4);
+		if ($input4=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input4=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input4=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -526,7 +605,14 @@ class M_data_keluhan extends CI_Model{
 		$this->db->where('id_jeniskeluhan',$input1);
 		$this->db->where('bulan',$input2);
 		$this->db->where('tahun',$input3);
-		$this->db->where('durasi',$input4);
+		if ($input4=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input4=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input4=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -542,7 +628,14 @@ class M_data_keluhan extends CI_Model{
 		$this->db->where('id_layanan',$input1);
 		$this->db->where('bulan',$input2);
 		$this->db->where('tahun',$input3);
-		$this->db->where('durasi',$input4);
+		if ($input4=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input4=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input4=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
@@ -559,7 +652,14 @@ class M_data_keluhan extends CI_Model{
 		$this->db->where('id_jeniskeluhan',$input2);
 		$this->db->where('bulan',$input3);
 		$this->db->where('tahun',$input4);
-		$this->db->where('durasi',$input5);
+		if ($input5=='1') {
+			$this->db->where('cari_durasi <','400');
+		} elseif ($input5=='2') {
+			$this->db->where('cari_durasi >','400');
+			$this->db->where('cari_durasi <','700');
+		} elseif ($input5=='3') {
+			$this->db->where('cari_durasi >','700');
+		}
 		$this->db->where('isDelete','no');
 		$query = $this->db->get('tb_keluhan');
 		if($query->num_rows()>0)
