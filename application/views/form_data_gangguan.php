@@ -373,7 +373,7 @@
     } );
         $('#example').dataTable({
           <?php if ($status_user == 'Admin') {?>
-          // "order": [[ 7, "asc" ]]
+          "order": [[ 0, "desc" ]]
         <?php } ?>
       });
         
