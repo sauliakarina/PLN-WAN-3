@@ -31,9 +31,7 @@
                                             <td><?php echo $p->ket_progress ?></td>
                                             <td>
                                               <div class="btn-group">
-                                                <form method='' action="<?php echo base_url('c_gangguan/edit_progress/'.$p->id_progress) ?>">
-                                                    <button class='btn btn-default' type='submit'>Edit</button>
-                                                </form>
+                                               <button onclick='edit_progress(<?php echo $p->id_progress ?>)' id="btn-edit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalTambah">Edit</button>
                                             <button data-toggle="modal" data-target="#exampleModal" onclick="set_id(<?php echo $p->id_progress?>)" class="btn btn-danger">Hapus</button>
                                           </div>
                                           </td>
@@ -122,8 +120,99 @@
 
                                   <div class="form-group" id="jenisgangguan">
                                     <label for="prodi">Jenis Gangguan :</label>
-                                    <select class="form-control"  id="jenis_gangguan" name="id_jenisgangguan">
-                                      <option value="<?php echo $id ?>">--<?php echo $this->m_data_gangguan->tampil_jenisgangguan_byid($this->m_data_gangguan->get_gangguan_byid($id)->id_jenisgangguan)->jenis_gangguan ?>--</option>
+                                    <select class="form-control"  id="id_jenisgangguan" name="id_jenisgangguan">
+                                      <option value="<?php echo $this->m_data_gangguan->get_gangguan_byid($id)->id_jenisgangguan ?>">--<?php echo $this->m_data_gangguan->tampil_jenisgangguan_byid($this->m_data_gangguan->get_gangguan_byid($id)->id_jenisgangguan)->jenis_gangguan ?>--</option>
+                                      <?php 
+                                         foreach($get_jenisgangguan as $jg){ 
+                                         echo "<option  value='$jg->id_jenisgangguan'>$jg->jenis_gangguan</option>";
+                                         }
+                                      ?>
+                                    </select>
+                                  </div>
+    
+                                 <div class="row" id="penyebabgangguan" style="display: none;">
+                                <div class='col-md-12'>
+                                    <div class="form-group">
+                                      <label for="date">Penyebab :  </label>
+                                            <textarea rows="5" id="penyebab_gangguan" class="form-control" name="penyebab_gangguan" ><?php echo $this->m_data_gangguan->get_gangguan_byid($id)->penyebab_gangguan ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" id="solusigangguan" style="display: none;">
+                                <div class='col-md-12'>
+                                    <div class="form-group">
+                                      <label for="date">Solusi :  </label>
+                                            <textarea rows="5" id="solusi_gangguan" class="form-control" name="solusi_gangguan"><?php echo $this->m_data_gangguan->get_gangguan_byid($id)->solusi_gangguan ?></textarea>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                              <div class="row"  id="lokasigangguan" style="display: none;">
+                              <div class='col-md-12'>
+                                  <div class="form-group">
+                                    <label for="date">Lokasi Gangguan :  </label>
+                                          <input type="text" id="lokasi_gangguan" name="lokasi_gangguan" class="form-control" value="<?php echo $this->m_data_gangguan->get_gangguan_byid($id)->lokasi_gangguan?>">
+                                      
+                                      </div>
+                                  </div>
+                              </div>
+                                 
+                              
+
+                          </div> <!-- modal body -->
+                          <div class="modal-footer">
+                              <button type="submit" class="btn btn-default btn-md"> Tambah </button>
+                            </form>
+                          </div>
+                      </div>
+                  </div>
+              </div><!-- modal -->
+
+
+     <!-- Modal Edit Progress -->
+              <div class="modal fade" id="ModalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Tambah Progress Gangguan</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body"> 
+                              <form action="<?php echo base_url();?>c_gangguan/tambah_aksi_progress" method="post">
+                                  <div class="row">
+                                 <div class='col-md-12'>
+                                   <div class="form-group">
+                                       <label for="date"> Waktu :  </label>
+                                       <!-- $id = id_gangguan -->
+                                       <input type='hidden' id="id_gangguan" name="id_gangguan" class="form-control" value="<?php echo $id ?>" />
+                                       <input type='hidden' id="open_date" name="open_date" class="form-control" value="<?php echo $this->m_data_gangguan->get_gangguan_byid($id)->open_date?>" />
+                                       <input type='hidden' id="open_time" name="open_time" class="form-control" value="<?php echo $this->m_data_gangguan->get_gangguan_byid($id)->open_time?>" />
+                                       <input type='time' class="form-control" name="waktu" />
+                          
+                                   </div>
+                                 </div>
+                              </div>
+                                  <div class="form-group">
+                                    <label for="nama">Keterangan </label>
+                                    <textarea rows="3" class="form-control" name="ket_progress"></textarea>
+                                  </div>
+
+                                 <div class="form-group">
+                                    <label for="prodi"> Status :</label>
+                                    <select class="form-control" id="status_progress" name="status_progress">
+                                      <option value="1">_____Pilih Status_____</option>
+                                      <option value="1">Penanganan </option>
+                                      <option value="2">Selesai </option>
+                                    </select>
+                                  </div>
+
+                                  <div class="form-group" id="jenisgangguan">
+                                    <label for="prodi">Jenis Gangguan :</label>
+                                    <select class="form-control"  id="id_jenisgangguan" name="id_jenisgangguan">
+                                      <option value="<?php echo $this->m_data_gangguan->get_gangguan_byid($id)->id_jenisgangguan ?>">--<?php echo $this->m_data_gangguan->tampil_jenisgangguan_byid($this->m_data_gangguan->get_gangguan_byid($id)->id_jenisgangguan)->jenis_gangguan ?>--</option>
                                       <?php 
                                          foreach($get_jenisgangguan as $jg){ 
                                          echo "<option  value='$jg->id_jenisgangguan'>$jg->jenis_gangguan</option>";
@@ -199,7 +288,7 @@
         dataType: "JSON",
         success: function(data) {
           $('[name="id_gangguan"]').val(data.id_gangguan);
-          $('[name="jenis_gangguan"]').val(data.jenis_gangguan);
+          $('[name="id_jenisgangguan"]').val(data.id_jenisgangguan);
           $('[name="penyebab_gangguan"]').val(data.penyebab_gangguan);
           $('[name="lokasi_gangguan"]').val(data.lokasi_gangguan);
           $('[name="solusi_gangguan"]').val(data.solusi_gangguan);

@@ -37,6 +37,18 @@
                           </select>
                         </div>
 
+                         <div class="form-group" id="jenis_gangguan" style="display: none;">
+                          <label for="prodi">Jenis Gangguan :</label>
+                          <select class="form-control"   name="id_jenisgangguan">
+                            <option value="<?php echo $g->id_jenisgangguan ?>">--<?php echo $this->m_data_gangguan->tampil_jenisgangguan_byid($g->id_jenisgangguan)->jenis_gangguan ?>--</option>
+                            <?php 
+                               foreach($get_jenisgangguan as $jg){ 
+                               echo "<option  value='$jg->id_jenisgangguan'>$jg->jenis_gangguan</option>";
+                               }
+                            ?>
+                          </select>
+  </div>
+
                        <div class="row" id="penyebab_gangguan" style="display: none;">
                       <div class='col-md-12'>
                           <div class="form-group">
@@ -87,10 +99,12 @@
           $('#penyebab_gangguan').attr('style','display:block !important');
           $('#lokasi_gangguan').attr('style','display:block !important');
           $('#solusi_gangguan').attr('style','display:block !important');
+          $('#jenis_gangguan').attr('style','display:block !important');
         }else if(val =="1"){
            $('#penyebab_gangguan').attr('style','display:none !important');
           $('#lokasi_gangguan').attr('style','display:none !important');
           $('#solusi_gangguan').attr('style','display:none !important');
+          $('#jenis_gangguan').attr('style','display:none !important');
         }
       });
     </script>

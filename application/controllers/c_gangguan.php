@@ -333,6 +333,7 @@ class c_gangguan extends CI_Controller{
 		$data=array (
 			'status_user' => $this->session->userdata('status_user'),
         	'gangguan' => $this->m_data_gangguan->edit_data($where,'tb_gangguan')->result(),
+        	'get_jenisgangguan' => $this->m_data_gangguan->get_jenisgangguan()
         	);
 		$this->load->view('element/header', $data);
 		$this->load->view('form_tambah_progress',$data);
@@ -345,8 +346,6 @@ class c_gangguan extends CI_Controller{
 		echo json_encode($data);
 	}
 
-
-
 	function tambah_aksi_progress(){
 		$id_gangguan = $this->input->post('id_gangguan');
 		$open_date = $this->input->post('open_date');
@@ -357,6 +356,7 @@ class c_gangguan extends CI_Controller{
 		$penyebab_gangguan =  $this->input->post('penyebab_gangguan');
 		$lokasi_gangguan =  $this->input->post('lokasi_gangguan');
 		$solusi_gangguan =  $this->input->post('solusi_gangguan');
+		$id_jenisgangguan =  $this->input->post('id_jenisgangguan');
 
 
 		if ($status_progress == "2") {
@@ -378,7 +378,8 @@ class c_gangguan extends CI_Controller{
 			'isSolved' => $isSolved,
 			'solusi_gangguan' => $solusi_gangguan,
 			'penyebab_gangguan' => $penyebab_gangguan,
-			'lokasi_gangguan' => $lokasi_gangguan
+			'lokasi_gangguan' => $lokasi_gangguan,
+			'id_jenisgangguan' => $id_jenisgangguan
 			);
 			$where = array(
 				'id_gangguan' => $id_gangguan
