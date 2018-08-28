@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">Jenis Layanan</h1>
+                        <h1 class="page-head-line">Kategori Layanan</h1>
                     </div>
                 </div>
                 <div class="row">
@@ -21,7 +21,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Jenis layanan</th>
+                                            <th>Jenis Layanan</th>
                                             <th style="width:50px">Aksi</th>
                                         </tr>
                                     </thead>

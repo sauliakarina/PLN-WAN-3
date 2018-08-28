@@ -53,7 +53,7 @@ class C_login extends CI_Controller{
                if($this->session->userdata('status_user')=='Admin') 
                {
                     redirect(base_url("c_main/home"));
-                }elseif($this->session->userdata('status_user')=='User') {
+                }elseif($this->session->userdata('status_user')=='User' || $this->session->userdata('status_user')=='Petugas') {
                    redirect(base_url("c_main/home_user"));
                 }
                 
