@@ -10,7 +10,7 @@
                 <div class="col-md-6">
       <form action="<?php echo base_url();?>c_gangguan/tambah_aksi_gangguan_email" method="post">        
       <div class="form-group">
-      <label for="area">Lokasi : </label>
+      <label for="area">Lokasi : <font color="red">*</font></label>
       <select id="area" name="id_layanan" class="form-control">
         <option value="">_____Pilih Area_____</option>
         <?php 
@@ -19,6 +19,8 @@
                    }
                 ?>
       </select>
+      <span class="help-block" style="color: red"> <?php $error = form_error('id_layanan');
+      echo "<font style='color: red;font-size: 15px' >$error</font>";?></span>           
   </div>
       
   
@@ -69,9 +71,10 @@
     
         <div class='col-md-6'>
             <div class="form-group">
-              <label for="date">Open Date :  </label>
+              <label for="date">Open Date :  <font color="red">*</font></label>
                     <input type='date' class="form-control" name="open_date" />
-                
+                    <span class="help-block" style="color: red"> <?php $error = form_error('open_date');
+                    echo "<font style='color: red;font-size: 15px' >$error</font>";?></span>
                 </div>
             </div>
         
@@ -80,9 +83,11 @@
     
         <div class='col-md-6'>
             <div class="form-group">
-              <label for="date">Open Time :  </label>
+              <label for="date">Open Time :  <font color="red">*</font></label>
                     <!-- <input id="timepicker" type="time" class="form-control" name="open_time" /> -->
                     <input id="timepicker" type="text" class="form-control" name="open_time" placeholder="hh:mm:ss" />
+                    <span class="help-block" style="color: red"> <?php $error = form_error('open_time');
+                    echo "<font style='color: red;font-size: 15px' >$error</font>";?></span>
                 </div>
             </div>
         
