@@ -120,15 +120,32 @@ class c_keluhan extends CI_Controller{
 	}
 
 	function tambah_aksi_jeniskeluhan(){
-		$jenis_keluhan = $this->input->post('jenis_keluhan');
-		$ket_keluhan = $this->input->post('ket_keluhan');
-
-		$data=array(
-			'jenis_keluhan' => $jenis_keluhan,
-			'ket_keluhan' => $ket_keluhan
-		);
-		$this->m_data_keluhan->input_keluhan($data, 'tb_jeniskeluhan');
-		redirect('c_keluhan/jeniskeluhan');
+		$this->form_validation->set_rules('jenis_keluhan','Jenis Keluhan','required');
+		
+		if ($this->form_validation->run()){
+			$jenis_keluhan = $this->input->post('jenis_keluhan');
+			$ket_keluhan = $this->input->post('ket_keluhan');
+			
+			$data=array(
+				'jenis_keluhan' => $jenis_keluhan,
+				'ket_keluhan' => $ket_keluhan
+			);
+			$this->m_data_keluhan->input_keluhan($data, 'tb_jeniskeluhan');
+				redirect('c_keluhan/jeniskeluhan');
+				echo " <script>
+	                     alert('Registrasi sukses. Jenis keluhan berhasil ditambahkan');
+	                     window.location='user'
+	                    </script>";
+		} else {
+			$data=array (
+        	'status_user' => $this->session->userdata('status_user'),
+            'error_validation' => validation_errors(),
+        	);
+	        $this->load->view('element/header',$data);	
+			$this->load->view('tambahkeluhan',$data);
+			$this->load->view('element/footer');
+		}
+	 
 	}
 
 
