@@ -56,7 +56,7 @@
 <div class="row"> <div class='col'>
             <div class="form-group">
               <label for="date">Tahun :  </label>
-                    <input type='text' class="form-control" name="tahun" />
+                    <input type='text' class="form-control" name="tahun" placeholder="Masukkan tahun"/>
                 
                 </div>
             </div>

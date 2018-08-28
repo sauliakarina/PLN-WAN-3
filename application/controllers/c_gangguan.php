@@ -12,7 +12,8 @@ class c_gangguan extends CI_Controller{
 	public function form_data_gangguan() {
 		$data=array (
 		'status_user' => $this->session->userdata('status_user'),
-	   	'gangguan' => $this->m_data_gangguan->tampil_gangguan()
+	   	'gangguan' => $this->m_data_gangguan->tampil_gangguan(),
+	   	'get_jenisgangguan' => $this->m_data_gangguan->get_jenisgangguan()
 	   	//'gangguan' => $this->m_data_gangguan->get_all()
 	   	);
 	  $this->load->view('element/header',$data);
@@ -319,7 +320,8 @@ class c_gangguan extends CI_Controller{
 		$data=array(
 			'status_user' => $this->session->userdata('status_user'),
 			'progress' => $this->m_data_gangguan->tampil_progress($id),
-			'id' => $id
+			'id' => $id,
+			'get_jenisgangguan' => $this->m_data_gangguan->get_jenisgangguan()
 		);
 		$this->load->view('element/header', $data);
 		$this->load->view('progress',$data);
@@ -335,6 +337,12 @@ class c_gangguan extends CI_Controller{
 		$this->load->view('element/header', $data);
 		$this->load->view('form_tambah_progress',$data);
 		$this->load->view('element/footer');
+	}
+	//untuk tambah progress
+	public function ambil_data_gangguan($id)
+	{
+		$data = $this->crud->get_gangguan_byid($id);
+		echo json_encode($data);
 	}
 
 
@@ -480,6 +488,8 @@ class c_gangguan extends CI_Controller{
 
 		echo json_encode($data);
 	}
+
+	
 
 	public function tampil_searchgangguan() {
 	  $data = array(

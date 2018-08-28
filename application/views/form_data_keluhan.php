@@ -20,7 +20,7 @@
                                             <th>Penyebab</th>
                                             <th>Solusi</th>
                                             <th>Durasi</th>
-                                            <?php if ($status_user == 'Admin') {
+                                            <?php if ($status_user == 'Admin' && $status_user=='Petugas') {
                                               echo "<th style='width:50px'>Aksi</th>";
                                             } ?>
                                         </tr>

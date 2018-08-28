@@ -57,9 +57,7 @@
                                                 <?php if ($this->m_data_gangguan->get_last_progress($g->id_gangguan)['status_progress'] == 1): ?>
                                                     <a href="<?php echo base_url('c_gangguan/progress/'.$g->id_gangguan) ?>">Penanganan</a><br>
                                                     <?php if ($status_user == 'Admin') { ?>
-                                                   <center><form method='' action="<?php echo base_url('c_gangguan/tambah_progress/'.$g->id_gangguan)?>">
-                                                     <button class="btn btn-outline-dark btn-sm" type='submit'><i class="fas fa-plus-square"></i> </button>
-                                                  </form></center>
+                                                      <button onclick='tambah_progress(<?php echo $g->id_gangguan ?>)' id="btn-edit" class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#ModalTambah"><i class="fas fa-plus-square"></i></button>
                                                 <?php } ?>
                                                     <?php elseif($this->m_data_gangguan->get_last_progress($g->id_gangguan)['status_progress'] == 2): ?>
                                                       <a href="<?php echo base_url('c_gangguan/progress/'.$g->id_gangguan) ?>">Selesai</a>
@@ -273,6 +271,94 @@
                   </div>
               </div><!-- modal -->
 
+   <!-- Modal Tambah Progress -->
+              <div class="modal fade" id="ModalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Tambah Progress Gangguan</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body"> 
+                              <form action="<?php echo base_url();?>c_gangguan/tambah_aksi_progress" method="post">
+                                  <div class="row">
+                                 <div class='col-md-12'>
+                                   <div class="form-group">
+                                       <label for="date"> Waktu :  </label>
+                                       <!-- $id = id_gangguan -->
+                                       <input type='hidden' id="id_gangguan" name="id_gangguan" class="form-control" value="<?php echo $g->id_gangguan ?>" />
+                                       <input type='hidden' id="open_date" name="open_date" class="form-control" value="<?php echo $g->open_date ?>" />
+                                       <input type='hidden' id="open_time" name="open_time" class="form-control" value="<?php echo $g->open_time?>" />
+                                       <input type='time' class="form-control" name="waktu" />
+                                   </div>
+                                 </div>
+                              </div>
+                                  <div class="form-group">
+                                    <label for="nama">Keterangan </label>
+                                    <textarea rows="3" class="form-control" name="ket_progress"></textarea>
+                                  </div>
+
+                                 <div class="form-group">
+                                    <label for="prodi"> Status :</label>
+                                    <select class="form-control" id="status_progress" name="status_progress">
+                                      <option value="1">_____Pilih Status_____</option>
+                                      <option value="1">Penanganan </option>
+                                      <option value="2">Selesai </option>
+                                    </select>
+                                  </div>
+
+                                  <div class="form-group" id="jenisgangguan">
+                                    <label for="prodi">Jenis Gangguan :</label>
+                                    <select class="form-control"  id="jenis_gangguan" name="id_jenisgangguan">
+                                      <option value="<?php echo $g->id_gangguan ?>">--<?php echo $this->m_data_gangguan->tampil_jenisgangguan_byid($g->id_jenisgangguan)->jenis_gangguan ?>--</option>
+                                      <?php 
+                                         foreach($get_jenisgangguan as $jg){ 
+                                         echo "<option  value='$jg->id_jenisgangguan'>$jg->jenis_gangguan</option>";
+                                         }
+                                      ?>
+                                    </select>
+                                  </div>
+    
+                                 <div class="row" id="penyebabgangguan" style="display: none;">
+                                <div class='col-md-12'>
+                                    <div class="form-group">
+                                      <label for="date">Penyebab :  </label>
+                                            <textarea rows="5" id="penyebab_gangguan" class="form-control" name="penyebab_gangguan" ><?php echo $g->penyebab_gangguan ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" id="solusigangguan" style="display: none;">
+                                <div class='col-md-12'>
+                                    <div class="form-group">
+                                      <label for="date">Solusi :  </label>
+                                            <textarea rows="5" id="solusi_gangguan" class="form-control" name="solusi_gangguan"><?php echo $g->solusi_gangguan ?></textarea>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                              <div class="row"  id="lokasigangguan" style="display: none;">
+                              <div class='col-md-12'>
+                                  <div class="form-group">
+                                    <label for="date">Lokasi Gangguan :  </label>
+                                          <input type="text" id="lokasi_gangguan" name="lokasi_gangguan" class="form-control" value="<?php echo $g->lokasi_gangguan?>">
+                                      
+                                      </div>
+                                  </div>
+                              </div>
+                                 
+                              
+
+                          </div> <!-- modal body -->
+                          <div class="modal-footer">
+                              <button type="submit" class="btn btn-default btn-md"> Tambah </button>
+                            </form>
+                          </div>
+                      </div>
+                  </div>
+              </div><!-- modal -->
 
 
              

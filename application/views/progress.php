@@ -8,7 +8,7 @@
                 <div class="row">
                 <div class="col-md-12">
                   <!--   Kitchen Sink -->
-                            <a href="<?php echo base_url('c_gangguan/tambah_progress/'.$id) ?>" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-plus-sign"></span> <b>TAMBAH</b> </a>
+                             <button onclick='tambah_progress(<?php echo $id ?>)' id="btn-edit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalTambah">TAMBAH</button>
                             <div class="table-responsive" style="margin-top: 20px">
                                 <table id="example" class="table table-striped table-hover">
                                     <thead>
@@ -81,26 +81,151 @@
                   </div>
               </div><!-- modal -->
 
-               <script type="text/javascript">
-                  $(document).ready( function () {
-                  $('#example').DataTable();
-              } );
-                  $('#example').dataTable({
-                });
-              </script>
+     <!-- Modal Tambah Progress -->
+              <div class="modal fade" id="ModalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Tambah Progress Gangguan</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body"> 
+                              <form action="<?php echo base_url();?>c_gangguan/tambah_aksi_progress" method="post">
+                                  <div class="row">
+                                 <div class='col-md-12'>
+                                   <div class="form-group">
+                                       <label for="date"> Waktu :  </label>
+                                       <!-- $id = id_gangguan -->
+                                       <input type='hidden' id="id_gangguan" name="id_gangguan" class="form-control" value="<?php echo $id ?>" />
+                                       <input type='hidden' id="open_date" name="open_date" class="form-control" value="<?php echo $this->m_data_gangguan->get_gangguan_byid($id)->open_date?>" />
+                                       <input type='hidden' id="open_time" name="open_time" class="form-control" value="<?php echo $this->m_data_gangguan->get_gangguan_byid($id)->open_time?>" />
+                                       <input type='time' class="form-control" name="waktu" />
+                          
+                                   </div>
+                                 </div>
+                              </div>
+                                  <div class="form-group">
+                                    <label for="nama">Keterangan </label>
+                                    <textarea rows="3" class="form-control" name="ket_progress"></textarea>
+                                  </div>
 
-                <script>
-                // popovers Initialization
-                $(function () {
-                    $('[data-toggle="popover"]').popover()
-                });
+                                 <div class="form-group">
+                                    <label for="prodi"> Status :</label>
+                                    <select class="form-control" id="status_progress" name="status_progress">
+                                      <option value="1">_____Pilih Status_____</option>
+                                      <option value="1">Penanganan </option>
+                                      <option value="2">Selesai </option>
+                                    </select>
+                                  </div>
 
-                var p_id;
-                function set_id(id) {
-                    p_id = id;
-                }
+                                  <div class="form-group" id="jenisgangguan">
+                                    <label for="prodi">Jenis Gangguan :</label>
+                                    <select class="form-control"  id="jenis_gangguan" name="id_jenisgangguan">
+                                      <option value="<?php echo $id ?>">--<?php echo $this->m_data_gangguan->tampil_jenisgangguan_byid($this->m_data_gangguan->get_gangguan_byid($id)->id_jenisgangguan)->jenis_gangguan ?>--</option>
+                                      <?php 
+                                         foreach($get_jenisgangguan as $jg){ 
+                                         echo "<option  value='$jg->id_jenisgangguan'>$jg->jenis_gangguan</option>";
+                                         }
+                                      ?>
+                                    </select>
+                                  </div>
+    
+                                 <div class="row" id="penyebabgangguan" style="display: none;">
+                                <div class='col-md-12'>
+                                    <div class="form-group">
+                                      <label for="date">Penyebab :  </label>
+                                            <textarea rows="5" id="penyebab_gangguan" class="form-control" name="penyebab_gangguan" ><?php echo $this->m_data_gangguan->get_gangguan_byid($id)->penyebab_gangguan ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
 
-                function deletep(){
-                    window.location.href =  "<?php echo base_url();?>c_gangguan/hapus_progress/"+p_id;
-                }
-            </script>
+                                <div class="row" id="solusigangguan" style="display: none;">
+                                <div class='col-md-12'>
+                                    <div class="form-group">
+                                      <label for="date">Solusi :  </label>
+                                            <textarea rows="5" id="solusi_gangguan" class="form-control" name="solusi_gangguan"><?php echo $this->m_data_gangguan->get_gangguan_byid($id)->solusi_gangguan ?></textarea>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                              <div class="row"  id="lokasigangguan" style="display: none;">
+                              <div class='col-md-12'>
+                                  <div class="form-group">
+                                    <label for="date">Lokasi Gangguan :  </label>
+                                          <input type="text" id="lokasi_gangguan" name="lokasi_gangguan" class="form-control" value="<?php echo $this->m_data_gangguan->get_gangguan_byid($id)->lokasi_gangguan?>">
+                                      
+                                      </div>
+                                  </div>
+                              </div>
+                                 
+                              
+
+                          </div> <!-- modal body -->
+                          <div class="modal-footer">
+                              <button type="submit" class="btn btn-default btn-md"> Tambah </button>
+                            </form>
+                          </div>
+                      </div>
+                  </div>
+              </div><!-- modal -->
+
+
+  <script type="text/javascript">
+   $(document).ready( function () {
+     $('#example').DataTable(); } );
+     $('#example').dataTable({});
+ </script>
+
+ <script>
+   // popovers Initialization
+    $(function () {
+      $('[data-toggle="popover"]').popover() });
+        var p_id;
+        function set_id(id) {
+        p_id = id;
+      }
+
+    function deletep(){
+     window.location.href =  "<?php echo base_url();?>c_gangguan/hapus_progress/"+p_id;
+   }
+
+   function tambah_progress(id) {
+
+      $.ajax({
+        url: "<?php echo base_url('c_gangguan/ambil_data_gangguan/') ?>/" + id,
+        type: "GET",
+        dataType: "JSON",
+        success: function(data) {
+          $('[name="id_gangguan"]').val(data.id_gangguan);
+          $('[name="jenis_gangguan"]').val(data.jenis_gangguan);
+          $('[name="penyebab_gangguan"]').val(data.penyebab_gangguan);
+          $('[name="lokasi_gangguan"]').val(data.lokasi_gangguan);
+          $('[name="solusi_gangguan"]').val(data.solusi_gangguan);
+          
+          $('#ModalTambah').modal('show');
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log('gagal mengambil data');
+        }
+      });
+    }
+
+    $('#status_progress').on('change', function(){
+        var val = this.value;
+        if(val == "2"){
+          $('#penyebabgangguan').attr('style','display:block !important');
+          $('#lokasigangguan').attr('style','display:block !important');
+          $('#solusigangguan').attr('style','display:block !important');
+          $('#jenisgangguan').attr('style','display:block !important');
+        }else if(val =="1"){
+           $('#penyebabgangguan').attr('style','display:none !important');
+          $('#lokasigangguan').attr('style','display:none !important');
+          $('#solusigangguan').attr('style','display:none !important');
+          $('#jenisgangguan').attr('style','display:none !important');
+
+        }
+      });
+
+ </script>
