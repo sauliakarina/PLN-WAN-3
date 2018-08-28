@@ -11,13 +11,16 @@
                     <br />
                     <form action="<?php echo base_url();?>c_keluhan/tambah_aksi_jeniskeluhan" method="post">
                         <div class="form-group">
-                          <label for="nama">Jenis Keluhan</label>
+                          <label for="nama">Jenis Keluhan<font color="red">*</font></label>
                           <input id="nama" type="text"  class="form-control" name="jenis_keluhan">
+                          <span class="help-block" style="color: red"> <?php $error = form_error('nama');
+                          echo "<font style='color: red;font-size: 15px' >$error</font>";?></span>
                         </div>
                         <div class="form-group">
-                          <label for="password">Keterangan</label>
+                          <label for="password">Keterangan<font color="red">*</font></label>
                           <textarea rows="3" class="form-control" name="ket_keluhan"></textarea>
-                          
+                          <span class="help-block" style="color: red"> <?php $error = form_error('nama');
+                          echo "<font style='color: red;font-size: 15px' >$error</font>";?></span>
                         </div>
                         
                           <button type="submit" class="btn btn-default btn-lg">Simpan </button>
