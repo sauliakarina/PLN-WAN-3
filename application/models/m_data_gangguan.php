@@ -38,8 +38,8 @@ class M_data_gangguan extends CI_Model{
 		$this->db->select('*');
 		$this->db->where('isDelete', 'no');
 		$this->db->where('isSolved', 'yes');
-		$this->db->order_by('id_gangguan', 'DESC');
-		//$this->db->order_by('open_date', 'DESC');
+		//$this->db->order_by('id_gangguan', 'DESC');
+		$this->db->order_by('open_date', 'DESC');
 		//$this->db->order_by('name', 'ASC');
 		//tambah sort by open date and open time
 		$query = $this->db->get('tb_gangguan');

@@ -37,7 +37,7 @@
                                         <tr>
                                             <td><?php echo $no++ ?></td>
                                             <td><?php echo $u->nama ?></td>
-                                            <td><?php echo $u->id_karyawan ?></td>
+                                            <td><?php echo $u->no_karyawan ?></td>
                                             <td><?php echo $u->password ?></td>
                                             <td><?php echo $u->status_user ?></td>
                                             <td>
