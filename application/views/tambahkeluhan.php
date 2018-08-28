@@ -13,14 +13,13 @@
                         <div class="form-group">
                           <label for="nama">Jenis Keluhan<font color="red">*</font></label>
                           <input id="nama" type="text"  class="form-control" name="jenis_keluhan">
-                          <span class="help-block" style="color: red"> <?php $error = form_error('nama');
+                          <span class="help-block" style="color: red"> <?php $error = form_error('jenis_keluhan');
                           echo "<font style='color: red;font-size: 15px' >$error</font>";?></span>
                         </div>
                         <div class="form-group">
-                          <label for="password">Keterangan<font color="red">*</font></label>
+                          <label for="keterangan">Keterangan</label>
                           <textarea rows="3" class="form-control" name="ket_keluhan"></textarea>
-                          <span class="help-block" style="color: red"> <?php $error = form_error('nama');
-                          echo "<font style='color: red;font-size: 15px' >$error</font>";?></span>
+                          
                         </div>
                         
                           <button type="submit" class="btn btn-default btn-lg">Simpan </button>

@@ -56,18 +56,19 @@
             </div>
             <?php echo form_open('c_login/aksi_login'); ?>
                 <div class="col-md-3"></div>
-                <div class="col-md-6 col-sm-6" style="margin-right:200 ; margin-left:200 ">
+                <div class="col-md-6 col-sm-6" style="margin-right:200 ; margin-left:200; margin-top:50px; ">
                     <div class="panel panel-primary" style="box-shadow: 8px 8px 5px #888888">
                         <div class="panel-heading">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Masuk &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <h3 class="panel-title">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Masuk &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                         </div>
                         <div class="panel-body">
-                        <div style="width: 320px" class="input-group">
+                        <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         <input placeholder="ID Karyawan" type="text" name="no_karyawan" id="id_karyawan" class="form-control" />
                         </div>
                         <p>
-                        <div style="width: 320px" class="input-group">
+                        <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <input placeholder="Password" type="password" name="password" id="password" class="form-control" />
                         </div>
