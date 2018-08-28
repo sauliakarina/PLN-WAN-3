@@ -10,7 +10,9 @@
                 <div class="col-md-6">
                 <form action="<?php echo base_url();?>c_keluhan/tambah_aksi_keluhan" method="post">
                 <div class="form-group">
-                <label for="area">Lokasi </label>
+                <label for="area">Lokasi <font color="red">*</font></label>
+                <span class="help-block" style="color: red"> <?php $error = form_error('id_layanan');
+                echo "<font style='color: red;font-size: 15px' >$error</font>";?></span> 
                 <select id="area" name="id_layanan" class="form-control">
                 <option value="_">_____Pilih Area_____</option>
                  <?php 
@@ -18,7 +20,7 @@
                    echo "<option  value='$gl->id_layanan'>$gl->lokasi</option>";
                    }
                 ?>
-              </select>
+                </select>
             </div>
       
   
@@ -66,22 +68,25 @@
     
         <div class='col-md-6'>
             <div class="form-group">
-              <label for="date">Open Date :  </label>
+              <label for="date">Open Date :  <font color="red">*</font></label>
                     <input type='date' class="form-control" name="open_date" />
-                
-                </div>
+                    <span class="help-block" style="color: red"> <?php $error = form_error('open_date');
+                    echo "<font style='color: red;font-size: 15px' >$error</font>";?></span>                 
             </div>
+        </div>
         
  
 
     
         <div class='col-md-6'>
             <div class="form-group">
-              <label for="date">Open Time :  </label>
+                  <label for="date">Open Time :  <font color="red">*</font></label>
                    <!--  <input type='time' class="form-control" name="open_time" /> -->
                   <input type="text" class="form-control" name="open_time" placeholder="hh:mm:ss" />
-                </div>
+                  <span class="help-block" style="color: red"> <?php $error = form_error('open_time');
+                  echo "<font style='color: red;font-size: 15px' >$error</font>";?></span>                 
             </div>
+        </div>
         
     
 

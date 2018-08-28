@@ -65,48 +65,67 @@ class c_keluhan extends CI_Controller{
 	 } 
 
 	 function tambah_aksi_keluhan(){
-		$id_layanan = $this->input->post('id_layanan');
-		$id_jeniskeluhan = $this->input->post('id_jeniskeluhan');
-		$deskripsi_jeniskeluhan = $this->input->post('deskripsi_jeniskeluhan');
-		$solusi = $this->input->post('solusi');
-		$penyebab = $this->input->post('penyebab');
-		$open_time = $this->input->post('open_time');
-		$close_time = $this->input->post('close_time');
-		$open_date = $this->input->post('open_date');
-		$close_date = $this->input->post('close_date');
-		$bulan = date("m", strtotime($open_date)); 
-		$tahun = date("Y", strtotime($open_date)); 
+	 	$this->form_validation->set_rules('id_layanan','Lokasi','required');
+		$this->form_validation->set_rules('open_date','Open Date','required');
+		$this->form_validation->set_rules('open_time','Open Time','required');
+		
+		if ($this->form_validation->run()) {
+			$id_layanan = $this->input->post('id_layanan');
+			$id_jeniskeluhan = $this->input->post('id_jeniskeluhan');
+			$deskripsi_jeniskeluhan = $this->input->post('deskripsi_jeniskeluhan');
+			$solusi = $this->input->post('solusi');
+			$penyebab = $this->input->post('penyebab');
+			$open_time = $this->input->post('open_time');
+			$close_time = $this->input->post('close_time');
+			$open_date = $this->input->post('open_date');
+			$close_date = $this->input->post('close_date');
+			$bulan = date("m", strtotime($open_date)); 
+			$tahun = date("Y", strtotime($open_date)); 	
+			if ($close_date != "" && $close_time !="") {
+				$start_date = new DateTime($open_date.' '.$open_time);
+				$end_date = new DateTime($close_date.' '.$close_time);
+				$durasi = date_diff($end_date, $start_date);
+				$durasi_jam = $durasi->d*24;
+				$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
+				$cari_durasi = $durasi->h+$durasi_jam.$durasi->i;
+			} else {
+				$input_durasi = '0:00';
+			}
 
-		if ($close_date != "" && $close_time !="") {
-			$start_date = new DateTime($open_date.' '.$open_time);
-			$end_date = new DateTime($close_date.' '.$close_time);
-			$durasi = date_diff($end_date, $start_date);
-			$durasi_jam = $durasi->d*24;
-			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
-			$cari_durasi = $durasi->h+$durasi_jam.$durasi->i;
+			$data=array(
+				'id_layanan' => $id_layanan,
+				'id_jeniskeluhan' => $id_jeniskeluhan,
+				'deskripsi_jeniskeluhan' => $deskripsi_jeniskeluhan,
+				'solusi_keluhan' => $solusi,
+				'penyebab_keluhan' => $penyebab,
+				'open_time' => $open_time,
+				'close_time' => $close_time,
+				'open_date' => $open_date,
+				'close_date' => $close_date,
+				'bulan' => $bulan,
+				'tahun' => $tahun,
+				'durasi' => $input_durasi,
+				'cari_durasi' => $cari_durasi
+				);
+
+			$this->m_data_keluhan->input_keluhan($data, 'tb_keluhan');
+			redirect('c_keluhan/form_data_keluhan');
+			echo " <script>
+	                alert('Registrasi sukses. Keluhan berhasil ditambahkan');
+	                window.location='form_data_keluhan'
+	                </script>";
 		} else {
-			$input_durasi = '0:00';
+			$data=array (
+        	'status_user' => $this->session->userdata('status_user'),
+            'error_validation' => validation_errors(),
+            'get_layanan' => $this->m_data_keluhan->get_layanan(),
+		  	'get_jeniskeluhan' => $this->m_data_keluhan->get_jeniskeluhan()
+        	);
+	        $this->load->view('element/header',$data);	
+			$this->load->view('form_tambah_keluhan',$data);
+			$this->load->view('element/footer');
 		}
-
-
-		$data=array(
-			'id_layanan' => $id_layanan,
-			'id_jeniskeluhan' => $id_jeniskeluhan,
-			'deskripsi_jeniskeluhan' => $deskripsi_jeniskeluhan,
-			'solusi_keluhan' => $solusi,
-			'penyebab_keluhan' => $penyebab,
-			'open_time' => $open_time,
-			'close_time' => $close_time,
-			'open_date' => $open_date,
-			'close_date' => $close_date,
-			'bulan' => $bulan,
-			'tahun' => $tahun,
-			'durasi' => $input_durasi,
-			'cari_durasi' => $cari_durasi
-
-		);
-		$this->m_data_keluhan->input_keluhan($data, 'tb_keluhan');
-		redirect('c_keluhan/form_data_keluhan');
+		
 	}
 
 	function jeniskeluhan(){
@@ -134,7 +153,7 @@ class c_keluhan extends CI_Controller{
 				redirect('c_keluhan/jeniskeluhan');
 				echo " <script>
 	                     alert('Registrasi sukses. Jenis keluhan berhasil ditambahkan');
-	                     window.location='user'
+	                     window.location='jeniskeluhan'
 	                    </script>";
 		} else {
 			$data=array (

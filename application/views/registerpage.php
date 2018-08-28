@@ -14,7 +14,7 @@
                         <div class="form-group">
                           <label for="nama">Nama:<font color="red">*</font></label>
                           <input id="nama" type="text" style="width:500px" class="form-control" name="nama">
-                           <span class="help-block" style="color: red"> <?php $error = form_error('nama');
+                          <span class="help-block" style="color: red"> <?php $error = form_error('nama');
                           echo "<font style='color: red;font-size: 15px' >$error</font>";?></span> 
                         </div>
                         <div class="form-group">
