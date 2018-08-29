@@ -16,7 +16,7 @@
         <option value="<?php echo $k->id_layanan ?>">--<?php echo $this->m_data_keluhan->tampil_layanan($k->id_layanan)->lokasi ?>--</option>
         <?php 
              foreach($get_layanan as $gl){ 
-               echo "<option  value='$gl->sid'>$gl->lokasi</option>";
+               echo "<option  value='$gl->id_layanan'>$gl->lokasi</option>";
                }
          ?>
       </select>
