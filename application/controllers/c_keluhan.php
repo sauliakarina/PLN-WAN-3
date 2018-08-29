@@ -118,6 +118,7 @@ class c_keluhan extends CI_Controller{
 	                </script>";
 		} else {
 			$data=array (
+			'title'=>'Form Tambah Keluhan - PLN',
         	'status_user' => $this->session->userdata('status_user'),
             'error_validation' => validation_errors(),
             'get_layanan' => $this->m_data_keluhan->get_layanan(),
