@@ -1,6 +1,6 @@
 <?php 
 
-class c_keluhan extends CI_Controller{
+class C_keluhan extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();		

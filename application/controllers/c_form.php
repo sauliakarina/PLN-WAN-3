@@ -1,6 +1,6 @@
 <?php
 
-class c_form extends CI_Controller {
+class C_form extends CI_Controller {
 
  /*public function form_tambah_data_gangguan() {
   $this->load->view('element/header');
