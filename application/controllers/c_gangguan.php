@@ -11,10 +11,11 @@ class c_gangguan extends CI_Controller{
 
 	public function form_data_gangguan() {
 		$data=array (
+		'title'=>'Data Gangguan - PLN',
 		'status_user' => $this->session->userdata('status_user'),
-	   	//'gangguan' => $this->m_data_gangguan->tampil_gangguan(),
+	   	'gangguan' => $this->m_data_gangguan->tampil_gangguan(),
 	   	'get_jenisgangguan' => $this->m_data_gangguan->get_jenisgangguan(),
-	   	'gangguan' => $this->m_data_gangguan->get_all()
+	   	//'gangguan' => $this->m_data_gangguan->get_all()
 	   	);
 	  $this->load->view('element/header',$data);
 	  $this->load->view('form_data_gangguan',$data);
@@ -719,12 +720,21 @@ class c_gangguan extends CI_Controller{
 			else{
 				$hasil= $this->m_data_gangguan->cari_sid_jg_b_t_d($sid,$id_jenisgangguan,$bulan,$tahun,$durasi);
 			}
+
+			$data=array(
+            'title'=>'Pencarian Data - PLN',
+            'status_user' => $this->session->userdata('status_user'),
+        	'gangguan' => $hasil
+        	);
+        	$this->load->view('element/header', $data);
+			$this->load->view('form_data_gangguan', $data);
+			$this->load->view('element/footer');
 		}
 
-		$this->hasil_pencarian_gangguan($hasil);
+		//$this->hasil_pencarian_gangguan($hasil);
 	}
 
-	public function hasil_pencarian_gangguan($hasil=null)
+	/*public function hasil_pencarian_gangguan($hasil=null)
 	{
 		$data=array(
         	'status_user' => $this->session->userdata('status_user'),
@@ -741,7 +751,7 @@ class c_gangguan extends CI_Controller{
 		//$this->load->view('pencarian_gangguan', $data);
 		$this->load->view('form_data_gangguan', $data);
 		$this->load->view('element/footer');
-	}
+	}*/
 
 	public function detail_waktu($id)
 	{

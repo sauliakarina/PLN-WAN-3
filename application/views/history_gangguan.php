@@ -21,9 +21,16 @@
                                             <th>Penyebab</th>
                                             <th>Solusi</th>
                                             <th>Progress</th>
+                                            <th>Durasi</th>
                                             <?php if ($status_user == 'Admin') {
                                               echo "<th style='width:50px'>Aksi</th>";
                                             } ?>
+                                            <th style="display: none;">SID</th>
+                                            <th style="display: none;">Open Date</th>
+                                            <th style="display: none;">Open Time</th>
+                                            <th style="display: none;">Close Date</th>
+                                            <th style="display: none;">Close Time</th>
+                                            <th style="display: none;">Jenis Layanan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -67,6 +74,7 @@
                                                 
                                               <?php endif; ?>
                                             </td>
+                                            <td><?php echo $g->durasi ?></td>
                                             <?php if ($status_user == 'Admin') { ?>
                                             <td> 
                                               <div class="btn-group">
@@ -77,6 +85,12 @@
                                               <button data-toggle="modal" data-target="#exampleModal" onclick="set_id(<?php echo $g->id_gangguan ?>)" class="btn btn-danger btn-sm">Hapus</button>
                                             </div>
                                             </td>
+                                            <td style="display: none;"><?php echo $this->m_data_gangguan->tampil_layanan($g->id_layanan)->sid ?></td>
+                                            <td style="display: none;"><?php echo $g->open_date ?></td>
+                                            <td style="display: none;"><?php echo $g->open_time ?></td>
+                                            <td style="display: none;"><?php echo $g->close_date ?></td>
+                                            <td style="display: none;"><?php echo $g->close_time ?></td>
+                                            <td style="display: none;"><?php echo $this->m_data_gangguan->jenislayanan_byid($this->m_data_gangguan->tampil_layanan($g->id_layanan)->id_jenislayanan)->nama_layanan ?></td>
                                         </tr>
                                          <?php }?>
                                         <?php }?>
@@ -276,16 +290,27 @@
              
     <script type="text/javascript">
         $(document).ready( function () {
-          $('#example').DataTable(
-            );
-    } );
-        $('#example').dataTable({
-          <?php if ($status_user == 'Admin') {?>
-          "order": [[ 0, "desc" ]]
-        <?php } ?>
-      });
+          $('#example').dataTable({
+            dom: '<"top"B>flt<"bottom"p><"clear">',
+            buttons: [
+                {
+                  text: 'Export Excel',
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: [1,9,10,11,12,13,7,14,2,3,4,5] // menentukan export kolom ke excel
+                    },
+                    className: 'btn btn-success mr-3'
+                }
+            ],
+            <?php if ($status_user == 'Admin') {?>
+            "order": [[ 0, "desc" ]]
+            <?php } ?>
+          });
+        });
         
     </script>
+
+
 
      <script>
         // popovers Initialization

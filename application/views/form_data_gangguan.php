@@ -43,13 +43,13 @@
                                         <tr>
                                             <td><?php echo $g->open_date ?></td>
                                             <td>
-                                              <button onclick='tampil_lokasi(<?php echo $g->id_layanan ?>)' id="btn-edit" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#ModalZ">Area <?php echo $g->lokasi //echo $this->m_data_gangguan->tampil_layanan($g->id_layanan)->lokasi ?></button></td>
+                                              <button onclick='tampil_lokasi(<?php echo $g->id_layanan ?>)' id="btn-edit" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#ModalZ">Area <?php echo $this->m_data_gangguan->tampil_layanan($g->id_layanan)->lokasi ?></button></td>
                                            <!--  <td><?php //echo anchor('c_gangguan/form_jenis_gangguan/'.$g->id_gangguan, $this->m_data_gangguan->tampil_jenisgangguan_byid($g->id_jenisgangguan)->jenis_gangguan); ?> </td> -->
                                             <td><?php if ($g->id_jenisgangguan=="16") {
                                               echo "<p style='color:'>Belum Teridentifikasi</p>";
                                               } else {
                                                 ?>
-                                                 <button onclick='ket_jenisgangguan(<?php echo $g->id_gangguan ?>)' id="btn-edit" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#ModalY"><?php echo $g->jenis_gangguan //$this->m_data_gangguan->tampil_jenisgangguan_byid($g->id_jenisgangguan)->jenis_gangguan ?></button>
+                                                 <button onclick='ket_jenisgangguan(<?php echo $g->id_gangguan ?>)' id="btn-edit" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#ModalY"><?php echo $this->m_data_gangguan->tampil_jenisgangguan_byid($g->id_jenisgangguan)->jenis_gangguan ?></button>
                                               <?php  } ?>
                                               </td>
                                             <td><?php echo $g->lokasi_gangguan ?></td>
@@ -88,12 +88,12 @@
                                               <button data-toggle="modal" data-target="#exampleModal" onclick="set_id(<?php echo $g->id_gangguan ?>)" class="btn btn-danger btn-sm">Hapus</button>
                                             </div>
                                             </td>
-                                            <td style="display: none;"><?php echo $g->sid ?></td>
+                                            <td style="display: none;"><?php echo $this->m_data_gangguan->tampil_layanan($g->id_layanan)->sid ?></td>
                                             <td style="display: none;"><?php echo $g->open_date ?></td>
                                             <td style="display: none;"><?php echo $g->open_time ?></td>
                                             <td style="display: none;"><?php echo $g->close_date ?></td>
                                             <td style="display: none;"><?php echo $g->close_time ?></td>
-                                            <td style="display: none;"><?php echo $g->nama_layanan ?></td>
+                                            <td style="display: none;"><?php echo $this->m_data_gangguan->jenislayanan_byid($this->m_data_gangguan->tampil_layanan($g->id_layanan)->id_jenislayanan)->nama_layanan ?></td>
                                         </tr>
                                          <?php }?>
                                         <?php }?>
