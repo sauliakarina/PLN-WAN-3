@@ -32,6 +32,7 @@ class c_keluhan extends CI_Controller{
 
 	public function form_data_keluhan() {
 	$data=array (
+	'title'=>'Data Keluhan - PLN',
    	'keluhan' => $this->m_data_keluhan->tampil_keluhan(),
    	'status_user' => $this->session->userdata('status_user')
    	);
@@ -130,6 +131,7 @@ class c_keluhan extends CI_Controller{
 
 	function jeniskeluhan(){
 		$data=array(
+			'title'=>'Kategori Keluhan - PLN',
 			'status_user' => $this->session->userdata('status_user'),
 			'jeniskeluhan' => $this->m_data_keluhan->tampil_jeniskeluhan()
 		);
@@ -289,6 +291,7 @@ class c_keluhan extends CI_Controller{
 
 	public function tampil_searchkeluhan() {
 	  $data = array(
+	  	'title'=>'Cari Data Keluhan - PLN',
 	  	'status_user' => $this->session->userdata('status_user'),
 	  	'get_layanan' => $this->m_data_keluhan->get_layanan(),
 	  	'get_jeniskeluhan' => $this->m_data_keluhan->get_jeniskeluhan()

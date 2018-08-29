@@ -24,6 +24,7 @@ class c_gangguan extends CI_Controller{
 
 	 public function history_gangguan() {
 		$data=array (
+		'title'=>'Histori Gangguan - PLN',
 		'status_user' => $this->session->userdata('status_user'),
 	   	'gangguan' => $this->m_data_gangguan->tampil_history_gangguan()
 	   	);
@@ -308,6 +309,7 @@ class c_gangguan extends CI_Controller{
 
 	function jenisgangguan(){
 		$data=array(
+			'title'=>'Kategori Gangguan - PLN',
 			'status_user' => $this->session->userdata('status_user'),
 			'jenisgangguan' => $this->m_data_gangguan->tampil_jenisgangguan()
 		);
@@ -585,6 +587,7 @@ class c_gangguan extends CI_Controller{
 
 	public function tampil_searchgangguan() {
 	  $data = array(
+	  	'title'=>'Cari Data Gangguan - PLN',
 	  	'status_user' => $this->session->userdata('status_user'),
 	  	'get_layanan' => $this->m_data_gangguan->get_layanan(),
 	  	'get_jenisgangguan' => $this->m_data_gangguan->get_jenisgangguan()

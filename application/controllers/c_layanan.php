@@ -10,6 +10,7 @@ class c_layanan extends CI_Controller{
 
 	 public function form_layanan(){
 		$data=array(
+			'title'=>'Layanan - PLN',
 			'status_user' => $this->session->userdata('status_user'),
 			'layanan' => $this->m_data_layanan->tampil_layanan()
 
@@ -89,6 +90,7 @@ class c_layanan extends CI_Controller{
 
 	function jenislayanan(){
 		$data=array(
+			'title'=>'Kategori Layanan - PLN',
 			'status_user' => $this->session->userdata('status_user'),
 			'jenislayanan' => $this->m_data_layanan->tampil_jenislayanan()
 		);

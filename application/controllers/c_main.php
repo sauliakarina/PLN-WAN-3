@@ -15,6 +15,7 @@ class c_main extends CI_Controller {
 
 public function home() {
   $data=array (
+    'title'=>'Beranda - PLN',
     'status_user' => $this->session->userdata('status_user')
       );
   $this->load->view('element/header',$data);
@@ -24,6 +25,7 @@ public function home() {
 
  public function home_user() {
   $data=array (
+    'title'=>'Beranda - PLN',
     'status_user' => $this->session->userdata('status_user')
       );
   $this->load->view('element/header',$data);

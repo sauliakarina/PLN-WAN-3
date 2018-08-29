@@ -10,6 +10,7 @@ class c_user extends CI_Controller{
 
 	function user(){
 		$data=array(
+			'title'=>'Pengguna - PLN',
 			'status_user' => $this->session->userdata('status_user'),
 			'user' => $this->m_data_user->tampil_user()
 		);
