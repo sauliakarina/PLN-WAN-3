@@ -34,6 +34,20 @@ class M_data_gangguan extends CI_Model{
 
 	}
 
+	public function get_all(){
+		$query = $this->db->query('SELECT l.*, g.*, jl.*, jg.* 
+			FROM tb_gangguan g, tb_layanan l, tb_jenislayanan jl, tb_jenisgangguan jg 
+			WHERE g.id_layanan = l.id_layanan
+			AND (l.id_jenislayanan = jl.id_jenislayanan)
+			AND (g.id_jenisgangguan = jg.id_jenisgangguan)');
+		if($query->num_rows()>0)
+		{
+			return $query->result();
+		} else{
+			return $query->result();
+		}
+	}
+
 	function tampil_history_gangguan(){
 		$this->db->select('*');
 		$this->db->where('isDelete', 'no');
@@ -114,7 +128,7 @@ class M_data_gangguan extends CI_Model{
 		return $this->db->get_where('tb_layanan',array('id_layanan'=>$sid))->row_array();
 	}
 
-	public function get_all()
+	/*public function get_all()
 	{
 		$this->db->select('*');
 		$this->db->join('tb_jenisgangguan', 'tb_jenisgangguan.id_jenisgangguan = tb_gangguan.id_jenisgangguan');
@@ -122,7 +136,7 @@ class M_data_gangguan extends CI_Model{
 		$this->db->join('tb_layanan', 'tb_layanan.sid = tb_gangguan.sid');
 		/*$this->db->where('isDelete', 'no');
 		$this->db->where('isSolved', 'no');*/
-		$this->db->order_by('id_gangguan', 'DESC');
+		/*$this->db->order_by('id_gangguan', 'DESC');
 		$query = $this->db->get('tb_gangguan');
 		if($query->num_rows()>0)
 			{
@@ -130,7 +144,8 @@ class M_data_gangguan extends CI_Model{
 			} else{
 				return $query->result();
 			}
-	}
+	}*/
+
 
 
 	function update_data($where,$data,$table){
