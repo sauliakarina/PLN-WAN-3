@@ -22,7 +22,7 @@
                                             <th>Solusi</th>
                                             <th>Progress</th>
                                             <th>Durasi</th>
-                                            <?php if ($status_user == 'Admin') {
+                                            <?php if ($status_user == 'Admin' || $status_user == 'Petugas') {
                                               echo "<th style='width:50px'>Aksi</th>";
                                             } ?>
                                             <th style="display: none;">SID</th>
@@ -78,7 +78,7 @@
                                               <?php endif; ?>
                                             </td>
                                             <td><?php echo $g->durasi ?></td>
-                                            <?php if ($status_user == 'Admin') { ?>
+                                            <?php if ($status_user == 'Admin' || $status_user == 'Petugas') { ?>
                                             <td> 
                                               <div class="btn-group">
                                               <button onclick='detail_waktu(<?php echo $g->id_gangguan ?>)' id="btn-edit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalX">Detail</button>
@@ -88,6 +88,7 @@
                                               <button data-toggle="modal" data-target="#exampleModal" onclick="set_id(<?php echo $g->id_gangguan ?>)" class="btn btn-danger btn-sm">Hapus</button>
                                             </div>
                                             </td>
+                                             <?php }?>
                                             <td style="display: none;"><?php echo $this->m_data_gangguan->tampil_layanan($g->id_layanan)->sid ?></td>
                                             <td style="display: none;"><?php echo $g->open_date ?></td>
                                             <td style="display: none;"><?php echo $g->open_time ?></td>
@@ -95,7 +96,7 @@
                                             <td style="display: none;"><?php echo $g->close_time ?></td>
                                             <td style="display: none;"><?php echo $this->m_data_gangguan->jenislayanan_byid($this->m_data_gangguan->tampil_layanan($g->id_layanan)->id_jenislayanan)->nama_layanan ?></td>
                                         </tr>
-                                         <?php }?>
+                                        
                                         <?php }?>
                                     </tbody>
                                 </table>
