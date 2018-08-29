@@ -349,6 +349,7 @@ class C_gangguan extends CI_Controller{
 	                    </script>";
 		} else {
 			$data=array (
+			'title'=>'Form Tambah Gangguan - PLN',
         	'status_user' => $this->session->userdata('status_user'),
             'error_validation' => validation_errors(),
         	);
