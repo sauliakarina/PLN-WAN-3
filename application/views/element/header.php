@@ -23,9 +23,6 @@
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-  <!--   <script src="<?php //echo base_url('assets/js/legacy.js')?>"></script>
-  <script src="<?php //echo base_url('assets/js/picker.js')?>"></script>
-   <script src="<?php //echo base_url('assets/js/picker.time.js')?>"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
@@ -35,13 +32,32 @@
 
     <!-- CUSTOM STYLE  -->
     <link href="<?php echo base_url('assets/css/style.css')?>" rel="stylesheet" />
-    <!-- <script src="<?php //echo base_url('assets/js/jquery-1.11.1.js')?>"></script>
-    <script src="<?php //echo base_url();?>assets/js/jquery-3.1.1.min.js" type="text/javascript"></script> -->
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script> -->
+    <script src="<?php //echo base_url('assets/js/jquery-1.11.1.js')?>"></script>
+    <!-- <script src="<?php echo base_url();?>assets/js/jquery-3.1.1.min.js" type="text/javascript"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> -->
+    <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script> -->
+
+    <!-- DataTables plugin start -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="<?php echo base_url()?>assets/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>assets/css/dataTables.min.css">
+    
+    <!-- JS -->
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/dataTables.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/jszip.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/pdfmake.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/vfs_fonts.js"></script>
+    <!-- <script type="text/javascript" src="<?php echo base_url()?>assets/js/dataTables.bootstrap.js"></script> -->
+    <!-- DataTables plugin end -->
+
     <link rel="stylesheet" href="<?php echo base_url();?>assets/datatables/jquery.dataTables.min.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
-    <script src="<?php echo base_url();?>/assets/datatables/jquery.dataTables.min.js" type="text/javascript"></script> 
+    <!-- <script src="<?php echo base_url();?>/assets/datatables/jquery.dataTables.min.js" type="text/javascript"></script>  -->
      <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   

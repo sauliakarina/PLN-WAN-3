@@ -9,7 +9,7 @@
                 <div class="row">
                 <div class="col-md-12">
                   <!--   Kitchen Sink d-->
-                            <a href="<?php echo base_url();?>c_gangguan/form_tambah_gangguan" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-plus-sign"></span> <b>TAMBAH</b> </a>
+                            <a href="<?php echo base_url();?>c_gangguan/form_tambah_gangguan" class="btn btn-primary btn-md"><span class="fa fa-plus"></span> <b>TAMBAH</b> </a>
                             <div class="table-responsive" style="margin-top: 20px">
                                 <table id="example" class="table table-striped table-bordered table-hover">
                                     <thead>
@@ -368,14 +368,23 @@
              
     <script type="text/javascript">
         $(document).ready( function () {
-          $('#example').DataTable(
-            );
-    } );
-        $('#example').dataTable({
-          <?php if ($status_user == 'Admin') {?>
-          "order": [[ 0, "desc" ]]
-        <?php } ?>
-      });
+          $('#example').dataTable({
+            dom: '<"top"B>flt<"bottom"p><"clear">',
+            buttons: [
+                {
+                  text: 'Export Excel',
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: [0,1,2,3,4] // menentukan export kolom ke excel
+                    },
+                    className: 'btn btn-success mr-3'
+                }
+            ],
+            <?php if ($status_user == 'Admin') {?>
+            "order": [[ 0, "desc" ]]
+            <?php } ?>
+          });
+        });
         
     </script>
 
