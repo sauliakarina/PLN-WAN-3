@@ -77,6 +77,7 @@ class c_gangguan extends CI_Controller{
 // 
 	public function form_tambah_gangguan() {
 		$data = array(
+		'title'=>'Form Tambah Gangguan - PLN',
 		'status_user' => $this->session->userdata('status_user'),
 	  	'get_layanan' => $this->m_data_gangguan->get_layanan(),
 	  	'get_jenisgangguan' => $this->m_data_gangguan->get_jenisgangguan()
@@ -238,6 +239,7 @@ class c_gangguan extends CI_Controller{
 	function edit_gangguan($id){
 		$where = array('id_gangguan' => $id);
 		$data=array (
+			'title'=>'Form Edit Gangguan - PLN',
 			'status_user' => $this->session->userdata('status_user'),
         	'gangguan' => $this->m_data_gangguan->edit_data($where,'tb_gangguan')->result(),
         	'get_layanan' => $this->m_data_gangguan->get_layanan(),
@@ -401,6 +403,7 @@ class c_gangguan extends CI_Controller{
 	//tampil progress by id
 	public function progress($id) {
 		$data=array(
+			'title'=>'Data Progress - PLN',
 			'status_user' => $this->session->userdata('status_user'),
 			'progress' => $this->m_data_gangguan->tampil_progress($id),
 			'id' => $id,
@@ -414,6 +417,7 @@ class c_gangguan extends CI_Controller{
 	function tambah_progress($id){
 		$where = array('id_gangguan' => $id);
 		$data=array (
+			'title'=>'Form Progress - PLN',
 			'status_user' => $this->session->userdata('status_user'),
         	'gangguan' => $this->m_data_gangguan->edit_data($where,'tb_gangguan')->result(),
         	'get_jenisgangguan' => $this->m_data_gangguan->get_jenisgangguan()
