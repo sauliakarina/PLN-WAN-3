@@ -456,13 +456,13 @@ class c_gangguan extends CI_Controller{
 			$isSolved = 'yes';
 			$close_date = date("Y-m-d");
 			date_default_timezone_set("Asia/Jakarta");
-			$close_time = date("h:i a");
+			$close_time = date("h:i:s a");
 
 			$start_date = new DateTime($open_date.' '.$open_time);
 			$end_date = new DateTime($close_date.' '.$close_time);
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
-			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i;
+			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
 			$cari_durasi = $durasi->h+$durasi_jam.$durasi->i;
 
 			$data=array(
@@ -527,13 +527,13 @@ class c_gangguan extends CI_Controller{
 			$isSolved = 'yes';
 			$close_date = date("Y-m-d");
 			date_default_timezone_set("Asia/Jakarta");
-			$close_time = date("h:i a");
+			$close_time = date("h:i:s a");
 
 			$start_date = new DateTime($open_date.' '.$open_time);
 			$end_date = new DateTime($close_date.' '.$close_time);
 			$durasi = date_diff($end_date, $start_date);
 			$durasi_jam = $durasi->d*24;
-			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i;
+			$input_durasi = ($durasi->h+$durasi_jam).':'.$durasi->i.':'.$durasi->s;
 			$cari_durasi = $durasi->h+$durasi_jam.$durasi->i;
 
 			$data=array(
@@ -766,7 +766,7 @@ class c_gangguan extends CI_Controller{
 		echo json_encode($data);
 	}
 
-	function tambah_aksi_gangguan(){
+	/*function tambah_aksi_gangguan(){
 
 		$id_layanan = $this->input->post('id_layanan');
 		$id_jenisgangguan= $this->input->post('id_jenisgangguan');
@@ -860,7 +860,7 @@ class c_gangguan extends CI_Controller{
 		
 	}
 
-
+*/
 	public function kirim_email()
     {
         // Konfigurasi email.

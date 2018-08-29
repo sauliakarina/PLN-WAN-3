@@ -394,9 +394,8 @@
                     className: 'btn btn-success mr-3'
                 }
             ],
-            <?php if ($status_user == 'Admin') {?>
+            
             "order": [[ 0, "desc" ]]
-            <?php } ?>
           });
         });
         
