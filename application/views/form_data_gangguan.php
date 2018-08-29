@@ -56,7 +56,7 @@
                                             <td><?php echo $g->penyebab_gangguan ?></td>
                                             <td><?php echo $g->solusi_gangguan ?></td>
                                             <td>
-                                              <?php if($this->m_data_gangguan->get_last_progress($g->id_gangguan)== false && $status_user == 'Admin'):  ?>
+                                              <?php if($this->m_data_gangguan->get_last_progress($g->id_gangguan)== false && ($status_user == 'Admin' || $status_user == 'Petugas')):  ?>
                                                  <center><form method='' action="<?php echo base_url('c_gangguan/tambah_progress/'.$g->id_gangguan)?>">
                                                      <button class="btn btn-outline-dark btn-sm" type='submit'><i class="fas fa-plus-square"></i> </button>
                                                   </form></center>
