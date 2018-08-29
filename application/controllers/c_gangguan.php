@@ -12,9 +12,9 @@ class c_gangguan extends CI_Controller{
 	public function form_data_gangguan() {
 		$data=array (
 		'status_user' => $this->session->userdata('status_user'),
-	   	'gangguan' => $this->m_data_gangguan->tampil_gangguan(),
-	   	'get_jenisgangguan' => $this->m_data_gangguan->get_jenisgangguan()
-	   	//'gangguan' => $this->m_data_gangguan->get_all()
+	   	//'gangguan' => $this->m_data_gangguan->tampil_gangguan(),
+	   	'get_jenisgangguan' => $this->m_data_gangguan->get_jenisgangguan(),
+	   	'gangguan' => $this->m_data_gangguan->get_all()
 	   	);
 	  $this->load->view('element/header',$data);
 	  $this->load->view('form_data_gangguan',$data);
