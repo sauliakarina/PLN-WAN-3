@@ -6,14 +6,11 @@ class C_login extends CI_Controller{
     function __construct(){
         parent::__construct();      
         $this->load->model('m_login');
-         $this->load->library(array('form_validation'));
+        $this->load->library(array('form_validation'));
         if (isset($_SESSION['id_karyawan'])){
             redirect ('c_main/home');
         }
-
     }
-
-
 
     function index(){
         $data=array(
@@ -28,7 +25,7 @@ class C_login extends CI_Controller{
         $this->load->view('element/footer');
     }
 
-    function aksi_login(){
+    public function aksi_login(){
         $no_karyawan = $this->input->post('no_karyawan');
         $password = $this->input->post('password');
         $where = array(
