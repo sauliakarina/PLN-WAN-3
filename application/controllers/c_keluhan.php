@@ -56,7 +56,7 @@ class C_keluhan extends CI_Controller{
 
 	public function form_tambah_keluhan() {
 		$data = array(
-		'title'=>'Form Tambah Keluhan - PLN',
+		'title'=>'Tambah Keluhan - PLN',
 		'status_user' => $this->session->userdata('status_user'),
 	  	'get_layanan' => $this->m_data_keluhan->get_layanan(),
 	  	'get_jeniskeluhan' => $this->m_data_keluhan->get_jeniskeluhan()
@@ -161,6 +161,7 @@ class C_keluhan extends CI_Controller{
 	                    </script>";
 		} else {
 			$data=array (
+			'title'=>'Tambah Keluhan - PLN',
         	'status_user' => $this->session->userdata('status_user'),
             'error_validation' => validation_errors(),
         	);
@@ -175,6 +176,7 @@ class C_keluhan extends CI_Controller{
 	function edit_jeniskeluhan($id){
 		$where = array('id_jeniskeluhan' => $id);
 		$data=array (
+			'title'=>'Kategori Keluhan - PLN',
 			'status_user' => $this->session->userdata('status_user'),
         	'jeniskeluhan' => $this->m_data_keluhan->edit_data($where,'tb_jeniskeluhan')->result()
         	);
@@ -226,7 +228,7 @@ class C_keluhan extends CI_Controller{
 	function edit_keluhan($id){
 		$where = array('id_keluhan' => $id);
 		$data=array (
-			'title'=>'Form Edit Keluhan - PLN',
+			'title'=>'Edit Keluhan - PLN',
 			'status_user' => $this->session->userdata('status_user'),
         	'keluhan' => $this->m_data_keluhan->edit_data($where,'tb_keluhan')->result(),
         	'get_layanan' => $this->m_data_keluhan->get_layanan(),

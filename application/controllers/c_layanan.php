@@ -48,6 +48,7 @@ class C_layanan extends CI_Controller{
 	 function edit_layanan($id){
 		$where = array('id_layanan' => $id);
 		$data=array (
+			'title'=>'Layanan - PLN',
 			'status_user' => $this->session->userdata('status_user'),
         	'layanan' => $this->m_data_layanan->edit_data($where,'tb_layanan')->result(),
         	'get_jenislayanan' => $this->m_data_layanan->get_jenislayanan()
@@ -103,6 +104,7 @@ class C_layanan extends CI_Controller{
 
 	function tambah_jenislayanan(){
 		$data=array(
+			'title'=>'Kategori Layanan - PLN',
 			'status_user' => $this->session->userdata('status_user'),
 			'jenislayanan' => $this->m_data_layanan->tampil_jenislayanan()
 		);
@@ -124,6 +126,7 @@ class C_layanan extends CI_Controller{
 	function edit_jenislayanan($id){
 		$where = array('id_jenislayanan' => $id);
 		$data=array (
+			'title'=>'Kategori Layanan - PLN',
 			'status_user' => $this->session->userdata('status_user'),
         	'jenislayanan' => $this->m_data_layanan->edit_data($where,'tb_jenislayanan')->result()
         	);

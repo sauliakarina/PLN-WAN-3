@@ -95,6 +95,7 @@ class C_form extends CI_Controller {
 
   public function tambahkeluhan() {
     $data=array(
+      'title'=>'Kategori Keluhan - PLN',
       'status_user' => $this->session->userdata('status_user'),
     );
   $this->load->view('element/header', $data);

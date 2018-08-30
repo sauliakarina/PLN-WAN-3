@@ -77,7 +77,7 @@ class C_gangguan extends CI_Controller{
 // 
 	public function form_tambah_gangguan() {
 		$data = array(
-		'title'=>'Form Tambah Gangguan - PLN',
+		'title'=>'Tambah Gangguan - PLN',
 		'status_user' => $this->session->userdata('status_user'),
 	  	'get_layanan' => $this->m_data_gangguan->get_layanan(),
 	  	'get_jenisgangguan' => $this->m_data_gangguan->get_jenisgangguan()
@@ -239,7 +239,7 @@ class C_gangguan extends CI_Controller{
 	function edit_gangguan($id){
 		$where = array('id_gangguan' => $id);
 		$data=array (
-			'title'=>'Form Edit Gangguan - PLN',
+			'title'=>'Edit Gangguan - PLN',
 			'status_user' => $this->session->userdata('status_user'),
         	'gangguan' => $this->m_data_gangguan->edit_data($where,'tb_gangguan')->result(),
         	'get_layanan' => $this->m_data_gangguan->get_layanan(),
@@ -322,6 +322,7 @@ class C_gangguan extends CI_Controller{
 
 	function tambah_jenisgangguan(){
 		$data=array(
+			'title'=>'Kategori Gangguan - PLN',
 			'status_user' => $this->session->userdata('status_user'),
 		);
 		$this->load->view('element/header', $data);
@@ -349,7 +350,7 @@ class C_gangguan extends CI_Controller{
 	                    </script>";
 		} else {
 			$data=array (
-			'title'=>'Form Tambah Gangguan - PLN',
+			'title'=>'Tambah Gangguan - PLN',
         	'status_user' => $this->session->userdata('status_user'),
             'error_validation' => validation_errors(),
         	);
@@ -375,6 +376,7 @@ class C_gangguan extends CI_Controller{
 	function edit_jenisgangguan($id){
 		$where = array('id_jenisgangguan' => $id);
 		$data=array (
+			'title'=>'Kategori Gangguan - PLN',
 			'status_user' => $this->session->userdata('status_user'),
         	'jenisgangguan' => $this->m_data_gangguan->edit_data($where,'tb_jenisgangguan')->result()
         	);

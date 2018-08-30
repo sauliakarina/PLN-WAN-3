@@ -21,6 +21,7 @@ class C_user extends CI_Controller{
 
 	function tambah_user(){
 		$data=array(
+			'title'=>'Pengguna - PLN',
 			'status_user' => $this->session->userdata('status_user'),
 			'user' => $this->m_data_user->tampil_user()
 		);
@@ -64,6 +65,7 @@ class C_user extends CI_Controller{
  	
 		} else {
 			$data=array (
+			'title'=>'Pengguna - PLN',
         	'status_user' => $this->session->userdata('status_user'),
             'error_validation' => validation_errors(),
             'user' => $this->m_data_user->tampil_user()
@@ -95,6 +97,7 @@ class C_user extends CI_Controller{
 	function edit_user($id){
 		$where = array('id_karyawan' => $id);
 		$data=array (
+			'title'=>'Pengguna - PLN',
 			'status_user' => $this->session->userdata('status_user'),
         	'user' => $this->m_data_user->edit_data($where,'tb_user')->result()
         	);
