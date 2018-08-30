@@ -9,8 +9,8 @@
                 <div class="row">
                 <div class="col-md-12">
                   <!--   Kitchen Sink -->
-                         <a href="<?php echo base_url();?>c_layanan/form_tambah_layanan" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-plus-sign"></span> <b>TAMBAH</b> </a>
-                          <table id="example"  class="table table-striped table-hover" style="margin-top: 20px">
+                         <a style="margin-bottom: 10px" href="<?php echo base_url();?>c_layanan/form_tambah_layanan" class="btn btn-primary btn-md"><span class="fa fa-plus"></span> <b>TAMBAH</b> </a>
+                          <table id="example"  class="table table-striped table-hover" style="margin-top: 25px">
                                     <thead>
                                         <tr>
                                             <th>No</th>
