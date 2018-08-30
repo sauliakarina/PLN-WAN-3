@@ -33,7 +33,8 @@ class C_layanan extends CI_Controller{
 
 	function hapus_layanan($id){
 		$data = array(
-		'isDelete' => 'yes'
+		'isDelete' => 'yes',
+		'sid' => '0000000000000'
 		);
 		$where = array(
 		'id_layanan' => $id
