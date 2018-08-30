@@ -23,6 +23,7 @@ class C_layanan extends CI_Controller{
 
 	public function form_tambah_layanan(){
 	  $data = array(
+	  	'title'=>'Tambah Layanan - PLN',
 	  	'status_user' => $this->session->userdata('status_user'),
 	  	'get_jenislayanan' => $this->m_data_layanan->get_jenislayanan()
 	  );
