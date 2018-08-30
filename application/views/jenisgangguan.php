@@ -66,6 +66,7 @@
                                   <span aria-hidden="true">&times;</span>
                               </button>
                           </div>
+                        
                           <div class="modal-body">
                             <div class="text-center">
                               <i class="fa fa-trash fa-4x mb-3 animated bounce"></i>
